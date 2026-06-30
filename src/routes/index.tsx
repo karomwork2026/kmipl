@@ -1,221 +1,479 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import dishwash from "@/assets/dishwash.png";
 import floorCleaner from "@/assets/floor-cleaner.png";
 import handWash from "@/assets/hand-wash.png";
 import toiletCleaner from "@/assets/toilet-cleaner.png";
 import waterBlack from "@/assets/wet-plus-water-black.png";
 import heroBg from "@/assets/farm-hero.jpg";
+import makhanaLaddu from "@/assets/makhana-laddu.png";
+import sattuLaddu from "@/assets/sattu-laddu.png";
+import sattuJaggeryBlocks from "@/assets/sattu-jaggery-blocks.png";
+import logo from "@/assets/karom-logo.png";
 
 const featuredProducts = [
   {
     name: "Makhana & Jaggery Laddu",
     price: "₹1000 / 1 Kg",
-    description: "Traditional premium laddus with natural sweetness and wholesome nutrition.",
-    image: heroBg,
+    description:
+      "Traditional premium laddus with natural sweetness and wholesome nutrition.",
+    image: makhanaLaddu,
+    tag: "Bestseller",
   },
   {
-    name: "Karom Dishwash Liquid",
-    price: "₹75 / 500 ml",
-    description: "Strong on grease, gentle on hands for everyday kitchen use.",
+    name: "Sattu Laddu",
+    price: "₹1000 / 1 Kg",
+    description:
+      "Protein-rich traditional laddus crafted from roasted gram for sustained daily energy.",
+    image: sattuLaddu,
+    tag: "New",
+  },
+  {
+    name: "Sattu & Jaggery Barfi",
+    price: "₹1000 / 1 Kg",
+    description:
+      "Nutritious traditional barfi crafted from sattu and natural jaggery.",
+    image: sattuJaggeryBlocks,
+    tag: "Traditional",
+  },
+  {
+    name: "Karom Dishwash",
+    price: "₹75 / 500ml",
+    description:
+      "Strong on grease, gentle on hands for everyday kitchen use.",
     image: dishwash,
+    tag: "Household",
   },
   {
-    name: "Karom Floor Cleaner",
-    price: "₹75 / 500 ml",
-    description: "Fresh-fragrance floor hygiene solution for daily home cleaning.",
-    image: floorCleaner,
-  },
-  {
-    name: "Karom Rose Soft Hand Wash",
-    price: "₹75 / 250 ml",
-    description: "Gentle hand cleansing with rose freshness and skin-friendly care.",
+    name: "Karom Rose Flavour Soft Wash",
+    price: "₹75 / 250ml",
+    description:
+      "Gentle hand cleansing with rose freshness and skin-friendly care.",
     image: handWash,
+    tag: "Hygiene",
   },
   {
-    name: "Karom Toilet Cleaner",
-    price: "₹75 / 500 ml",
-    description: "Deep stain and odor removal for hygienic bathroom surfaces.",
-    image: toiletCleaner,
-  },
-  {
-    name: "Wet Plus Packaged Water",
-    price: "₹20 / 500 ml",
-    description: "Hygienically processed drinking water for safe daily hydration.",
+    name: "Wet Plus Drinking Water",
+    price: "₹10 / 500ml",
+    description:
+      "Hygienically processed drinking water for safe daily hydration.",
     image: waterBlack,
+    tag: "Beverage",
   },
 ];
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Karom Industries | Affordable Health & Hygiene Products" },
-      {
-        name: "description",
-        content:
-          "Explore Karom Industries' trusted range of healthy traditional snacks, household cleaners, and packaged drinking water.",
+const stats = [
+  { value: "10+", label: "Products" },
+  { value: "100+", label: "Target Cities" },
+  { value: "24h", label: "Response Time" },
+  { value: "100%", label: "Natural Ingredients" },
+];
+
+/* ─── Scroll reveal utility ─── */
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
       },
-      { property: "og:title", content: "Karom Industries | Affordable Health & Hygiene Products" },
-      {
-        property: "og:description",
-        content:
-          "Supporting farmers and families with hygienic, affordable, and quality-focused products across India.",
-      },
-    ],
-  }),
-  component: HomePage,
-});
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    const el = ref.current;
+    if (el) {
+      el.querySelectorAll(".reveal").forEach((child) => observer.observe(child));
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return ref;
+}
+
+export const Route = createFileRoute("/")(
+  {
+    head: () => ({
+      meta: [
+        {
+          title:
+            "Karom Industries | Affordable Health & Hygiene Products",
+        },
+        {
+          name: "description",
+          content:
+            "Explore Karom Industries' trusted range of healthy traditional snacks, household cleaners, and packaged drinking water.",
+        },
+        {
+          property: "og:title",
+          content:
+            "Karom Industries | Affordable Health & Hygiene Products",
+        },
+        {
+          property: "og:description",
+          content:
+            "Supporting farmers and families with hygienic, affordable, and quality-focused products across India.",
+        },
+      ],
+    }),
+    component: HomePage,
+  },
+);
 
 function HomePage() {
+  const pageRef = useReveal();
+
   return (
-    <div>
-      <section className="relative overflow-hidden border-b border-border bg-surface">
-        <img
-          src={heroBg}
-          alt="Farm landscape representing farmer-linked sourcing"
-          className="absolute inset-0 h-full w-full object-cover"
-          loading="eager"
+    <div ref={pageRef}>
+      {/* ─── HERO SECTION (SPLIT LAYOUT) ─── */}
+      <section className="relative overflow-hidden bg-background pt-24 pb-16 md:pt-32 md:pb-24">
+        {/* Subtle background glow */}
+        <div 
+          className="absolute right-0 top-0 w-1/2 h-full opacity-20 blur-3xl pointer-events-none -z-10"
+          style={{ background: "linear-gradient(to bottom left, oklch(0.80 0.12 85), transparent)" }}
         />
-        <div className="absolute inset-0 bg-brand/60" />
-        <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-20 text-brand-foreground md:px-6 md:py-24">
-          <p className="text-base font-medium md:text-lg">Traditional nutrition for modern India</p>
-          <h1 className="max-w-3xl text-4xl font-bold leading-tight md:text-5xl">
-            Affordable Health, Hygienic Quality, Farmer&apos;s Trust
-          </h1>
-          <p className="max-w-2xl text-base leading-7 text-brand-foreground/90 md:text-lg">
-            Karom Industries delivers healthy nutrition and hygiene products built for families,
-            retailers, schools, and institutions in Tier-2 and Tier-3 India.
-          </p>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Link
-              to="/products"
-              className="inline-flex min-h-11 items-center justify-center rounded-md bg-cta px-5 py-2 text-sm font-semibold text-cta-foreground transition-opacity hover:opacity-90"
-            >
-              Shop Now
-            </Link>
-            <Link
-              to="/about"
-              className="inline-flex min-h-11 items-center justify-center rounded-md border border-brand-foreground/40 bg-brand-foreground/10 px-5 py-2 text-sm font-semibold text-brand-foreground transition-colors hover:bg-brand-foreground/20"
-            >
-              Learn More
-            </Link>
-          </div>
+        
+        {/* Watermark logo */}
+        <div className="absolute left-4 top-24 w-64 opacity-[0.03] pointer-events-none -z-10">
+          <img src={logo} alt="" className="w-full h-auto" aria-hidden="true" />
         </div>
-      </section>
-
-      <section className="bg-background py-16">
-        <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Why families choose Karom</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <article className="rounded-lg border border-border bg-card p-6">
-              <p className="text-2xl" aria-hidden="true">
-                🌾
-              </p>
-              <h3 className="mt-4 text-xl font-semibold text-foreground">Farmer-Linked Sourcing</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Direct partnerships with farming communities ensure fair value and fresher inputs.
-              </p>
-            </article>
-            <article className="rounded-lg border border-border bg-card p-6">
-              <p className="text-2xl" aria-hidden="true">
-                🏥
-              </p>
-              <h3 className="mt-4 text-xl font-semibold text-foreground">Hygienic Processing</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Every product follows clean processing and quality-focused production standards.
-              </p>
-            </article>
-            <article className="rounded-lg border border-border bg-card p-6">
-              <p className="text-2xl" aria-hidden="true">
-                ₹
-              </p>
-              <h3 className="mt-4 text-xl font-semibold text-foreground">Affordable Pricing</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Premium nutrition and cleaning essentials priced for everyday Indian households.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-surface-2 py-16">
-        <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">Featured Products</h2>
-            <Link
-              to="/products"
-              className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-            >
-              View all products
-            </Link>
-          </div>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredProducts.map((product) => (
-              <article
-                key={product.name}
-                className="group rounded-lg border border-border bg-card p-4 transition-shadow hover:shadow-lg"
+        
+        <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
+            {/* Left Column: Text */}
+            <div className="flex flex-col gap-6 lg:pr-8">
+              <p
+                className="animate-fade-in-up text-sm font-bold uppercase tracking-[0.2em]"
+                style={{ color: "oklch(0.65 0.12 75)" }}
               >
-                <div className="aspect-[4/5] overflow-hidden rounded-md bg-brand-soft">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-foreground">{product.name}</h3>
-                <p className="mt-1 text-base font-semibold text-brand">{product.price}</p>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">{product.description}</p>
+                Traditional Nutrition for Modern India
+              </p>
+              <h1 className="animate-fade-in-up delay-100 text-5xl font-extrabold leading-[1.1] text-foreground md:text-6xl lg:text-[4rem]">
+                Affordable Health, <br/>
+                <span className="text-gradient-gold">Hygienic Quality</span>,
+                <br />
+                Farmer&apos;s Trust
+              </h1>
+              <p className="animate-fade-in-up delay-200 text-lg font-medium leading-relaxed text-muted-foreground max-w-lg">
+                Karom Industries delivers healthy nutrition and hygiene products built for families,
+                retailers, schools, and institutions in Tier-2 and Tier-3 India.
+              </p>
+              
+              <div className="animate-fade-in-up delay-300 flex flex-wrap gap-4 pt-2">
                 <Link
                   to="/products"
-                  className="mt-4 inline-flex min-h-11 items-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                  className="btn-shimmer inline-flex min-h-12 items-center justify-center rounded-xl px-7 py-3 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
+                    color: "oklch(0.18 0.02 80)",
+                  }}
                 >
-                  View Details
+                  Explore Products
                 </Link>
+                <Link
+                  to="/about"
+                  className="inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-border bg-transparent px-7 py-3 text-sm font-bold text-foreground transition-all duration-300 hover:border-brand-gold hover:bg-surface-2 hover:scale-105"
+                >
+                  Learn More
+                </Link>
+              </div>
+
+              {/* Inline stats (Moved below text in left col) */}
+              <div className="animate-fade-in-up delay-400 mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="pt-4 border-t border-border">
+                    <p className="text-2xl font-extrabold" style={{ color: "oklch(0.65 0.12 75)" }}>
+                      {stat.value}
+                    </p>
+                    <p className="mt-1 text-[11px] font-bold text-muted-foreground uppercase tracking-wider">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Hero Image / Composition */}
+            <div className="animate-fade-in-up delay-200 relative mx-auto w-full max-w-md lg:max-w-none">
+              <div className="relative aspect-square md:aspect-[4/3] lg:aspect-[4/3] overflow-hidden rounded-3xl bg-surface-2 shadow-2xl">
+                 {/* Main hero image */}
+                 <img
+                   src={makhanaLaddu} 
+                   alt="Karom Premium Products"
+                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                 />
+                 {/* Overlay badge */}
+                 <div className="absolute bottom-6 right-6 rounded-2xl bg-white/90 backdrop-blur-md p-4 shadow-xl border border-white">
+                   <div className="flex items-center gap-3">
+                     <div className="flex h-10 w-10 items-center justify-center rounded-full font-bold text-xl" style={{ background: "oklch(0.80 0.12 85 / 0.2)", color: "oklch(0.65 0.12 75)" }}>
+                       ✓
+                     </div>
+                     <div>
+                       <p className="text-sm font-bold text-foreground">100% Natural</p>
+                       <p className="text-xs font-semibold text-muted-foreground">No refined sugar</p>
+                     </div>
+                   </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── WHY KAROM (VALUE PROPOSITIONS) ─── */}
+      <section className="relative bg-background py-20 overflow-hidden">
+        {/* Subtle gold gradient line */}
+        <div className="section-divider" />
+
+        <div className="mx-auto w-full max-w-6xl px-4 pt-16 md:px-6">
+          <div className="text-center reveal">
+            <p
+              className="text-sm font-semibold uppercase tracking-[0.2em]"
+              style={{ color: "oklch(0.80 0.12 85)" }}
+            >
+              Our Promise
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
+              Why Families Choose <span className="text-gradient-gold">Karom</span>
+            </h2>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                emoji: "🌾",
+                title: "Farmer-Linked Sourcing",
+                desc: "Direct partnerships with farming communities ensure fair value, fresher inputs, and stronger rural livelihoods.",
+                delay: "delay-100",
+              },
+              {
+                emoji: "🏥",
+                title: "Hygienic Processing",
+                desc: "Every product follows clean processing and quality-focused production standards for reliable safety.",
+                delay: "delay-200",
+              },
+              {
+                emoji: "💰",
+                title: "Affordable Pricing",
+                desc: "Premium nutrition and cleaning essentials priced for everyday Indian households in Tier-2 and Tier-3 cities.",
+                delay: "delay-300",
+              },
+            ].map((item) => (
+              <article
+                key={item.title}
+                className={`reveal ${item.delay} card-premium group p-7`}
+              >
+                <div
+                  className="flex h-14 w-14 items-center justify-center rounded-xl text-2xl transition-transform duration-300 group-hover:scale-110"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, oklch(0.80 0.12 85 / 0.15), oklch(0.65 0.12 75 / 0.1))",
+                  }}
+                >
+                  {item.emoji}
+                </div>
+                <h3 className="mt-5 text-xl font-bold text-foreground">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.desc}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-background py-16">
+      {/* ─── FEATURED PRODUCTS ─── */}
+      <section className="relative bg-surface-2 py-20 overflow-hidden">
+        {/* Background logo watermark */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/3 w-96 opacity-[0.03] pointer-events-none">
+          <img src={logo} alt="" className="w-full h-auto" aria-hidden="true" />
+        </div>
+
+        <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6">
+          <div className="reveal flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p
+                className="text-sm font-semibold uppercase tracking-[0.2em]"
+                style={{ color: "oklch(0.80 0.12 85)" }}
+              >
+                Our Collection
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
+                Featured <span className="text-gradient-gold">Products</span>
+              </h2>
+            </div>
+            <Link
+              to="/products"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-card px-5 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand-gold hover:shadow-md hover:scale-105"
+            >
+              View All Products →
+            </Link>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredProducts.map((product, idx) => (
+              <article
+                key={product.name}
+                className={`reveal delay-${(idx % 3) * 100 + 100} card-premium group`}
+              >
+                <div className="relative aspect-[4/5] overflow-hidden rounded-t-lg bg-gradient-to-b from-brand-soft to-surface">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  {/* Tag badge */}
+                  <span
+                    className="absolute top-3 left-3 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur-md z-10"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, oklch(0.80 0.12 85 / 0.9), oklch(0.65 0.12 75 / 0.9))",
+                      color: "oklch(0.18 0.02 80)",
+                    }}
+                  >
+                    {product.tag}
+                  </span>
+                  {/* Gradient overlay on hover */}
+                  <div
+                    className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    style={{
+                      background:
+                        "linear-gradient(to top, oklch(0.18 0.02 80 / 0.4), transparent 50%)",
+                    }}
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-bold text-foreground leading-snug">
+                    {product.name}
+                  </h3>
+                  <p
+                    className="mt-1.5 text-base font-bold"
+                    style={{ color: "oklch(0.80 0.12 85)" }}
+                  >
+                    {product.price}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    {product.description}
+                  </p>
+                  <Link
+                    to="/products"
+                    className="mt-4 inline-flex min-h-10 items-center rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-md"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, oklch(0.38 0.11 137), oklch(0.48 0.12 137))",
+                      color: "oklch(0.98 0.01 105)",
+                    }}
+                  >
+                    View Details
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CORE PRINCIPLES ─── */}
+      <section className="bg-background py-20">
         <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Why Choose Karom</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="reveal text-center">
+            <p
+              className="text-sm font-semibold uppercase tracking-[0.2em]"
+              style={{ color: "oklch(0.80 0.12 85)" }}
+            >
+              What Drives Us
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-foreground md:text-4xl">
+              Built on Three <span className="text-gradient-gold">Core Principles</span>
+            </h2>
+          </div>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
             {[
-              "Natural ingredients with no refined sugar or artificial additives in nutrition range",
-              "Supports local farmers through direct and fair-value sourcing relationships",
-              "Tier-2 and Tier-3 focused pricing model for practical affordability",
-              "Trusted hygiene and quality standards across product categories",
-            ].map((item) => (
-              <div key={item} className="rounded-lg border border-border bg-card px-5 py-4 text-sm leading-6 text-foreground">
-                {item}
+              {
+                icon: "💪",
+                title: "Better Health",
+                desc: "Through natural and traditional nutrition — no refined sugar, no artificial additives in our nutrition range.",
+                gradient: "from-green-500/10 to-transparent",
+              },
+              {
+                icon: "🤝",
+                title: "Farmer Empowerment",
+                desc: "Through direct sourcing and sustainable partnerships that strengthen rural economies.",
+                gradient: "from-amber-500/10 to-transparent",
+              },
+              {
+                icon: "🎯",
+                title: "Affordable Quality",
+                desc: "Premium outcomes at practical prices for consumers in Tier-2 and Tier-3 markets.",
+                gradient: "from-blue-500/10 to-transparent",
+              },
+            ].map((item, idx) => (
+              <div
+                key={item.title}
+                className={`reveal delay-${(idx + 1) * 100} card-premium group flex flex-col items-center text-center p-8`}
+              >
+                <div
+                  className="flex h-16 w-16 items-center justify-center rounded-2xl text-3xl transition-transform duration-300 group-hover:scale-110 animate-float"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, oklch(0.80 0.12 85 / 0.15), oklch(0.88 0.08 85 / 0.08))",
+                    animationDelay: `${idx * 0.5}s`,
+                  }}
+                >
+                  {item.icon}
+                </div>
+                <h3 className="mt-5 text-xl font-bold text-foreground">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-y border-border bg-brand py-14 text-brand-foreground">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-4 px-4 md:flex-row md:items-center md:justify-between md:px-6">
-          <div>
-            <h2 className="text-3xl font-bold md:text-4xl">Ready to experience healthier living?</h2>
-            <p className="mt-2 max-w-2xl text-sm leading-6 text-brand-foreground/90 md:text-base">
-              Join thousands of families choosing Karom for better health, better hygiene, and
-              better value.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
+      {/* ─── CTA SECTION ─── */}
+      <section className="relative overflow-hidden py-20">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, oklch(0.25 0.08 137), oklch(0.30 0.06 80))",
+          }}
+        />
+        {/* Pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `url(${logo})`, backgroundSize: "120px", backgroundRepeat: "repeat" }} />
+
+        <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-4 text-center md:px-6">
+          <h2 className="reveal text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+            Ready to Experience{" "}
+            <span className="text-gradient-gold">Healthier Living?</span>
+          </h2>
+          <p className="reveal delay-100 max-w-2xl text-base leading-7 text-white/80 md:text-lg">
+            Join thousands of families choosing Karom for better health, better hygiene, and
+            better value. Your journey to traditional wellness starts here.
+          </p>
+          <div className="reveal delay-200 flex flex-wrap justify-center gap-4 pt-4">
             <Link
               to="/contact"
-              className="inline-flex min-h-11 items-center justify-center rounded-md bg-cta px-5 py-2 text-sm font-semibold text-cta-foreground transition-opacity hover:opacity-90"
+              className="btn-shimmer inline-flex min-h-12 items-center justify-center rounded-xl px-8 py-3 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              style={{
+                background:
+                  "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
+                color: "oklch(0.18 0.02 80)",
+              }}
             >
               Contact Us
             </Link>
             <Link
               to="/products"
-              className="inline-flex min-h-11 items-center justify-center rounded-md border border-brand-foreground/40 bg-brand-foreground/10 px-5 py-2 text-sm font-semibold text-brand-foreground transition-colors hover:bg-brand-foreground/20"
+              className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:bg-white/20 hover:scale-105"
             >
-              Shop Online
+              Browse Products
             </Link>
           </div>
         </div>
