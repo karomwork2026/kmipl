@@ -228,7 +228,7 @@ function ContactPage() {
           <div className="mt-6 overflow-hidden rounded-lg border border-border bg-card">
             <iframe
               title="Karom Industries office map"
-              src="https://maps.google.com/maps?q=Omaxe%20City%202%20Mangliya%20Arniya%20Indore&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              src="https://www.google.com/maps?q=Villa%20No.%20436%2C%20Omaxe%20City%202%2C%20Opposite%20DLF%2C%20Mangliya%20Arniya%2C%20Indore%2C%20Madhya%20Pradesh%20453771&z=14&output=embed"
               className="h-[380px] w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
