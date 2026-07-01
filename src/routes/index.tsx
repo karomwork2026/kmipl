@@ -133,7 +133,7 @@ function HomePage() {
   return (
     <div ref={pageRef}>
       {/* ─── HERO SECTION (SPLIT LAYOUT) ─── */}
-      <section className="relative overflow-hidden bg-background pt-24 pb-16 md:pt-32 md:pb-24">
+      <section className="relative overflow-hidden bg-transparent pt-24 pb-16 md:pt-32 md:pb-24">
         {/* Subtle background glow */}
         <div 
           className="absolute right-0 top-0 w-1/2 h-full opacity-20 blur-3xl pointer-events-none -z-10"
@@ -229,7 +229,7 @@ function HomePage() {
       </section>
 
       {/* ─── WHY KAROM (VALUE PROPOSITIONS) ─── */}
-      <section className="relative bg-background py-20 overflow-hidden">
+      <section className="relative bg-transparent py-20 overflow-hidden">
         {/* Subtle gold gradient line */}
         <div className="section-divider" />
 
@@ -289,7 +289,7 @@ function HomePage() {
       </section>
 
       {/* ─── FEATURED PRODUCTS ─── */}
-      <section className="relative bg-surface-2 py-20 overflow-hidden">
+      <section className="relative bg-surface-2/50 backdrop-blur-sm py-20 overflow-hidden">
         {/* Background logo watermark */}
         <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/3 w-96 opacity-[0.03] pointer-events-none">
           <img src={logo} alt="" className="w-full h-auto" aria-hidden="true" />
@@ -381,7 +381,7 @@ function HomePage() {
       </section>
 
       {/* ─── CORE PRINCIPLES ─── */}
-      <section className="bg-background py-20">
+      <section className="bg-transparent py-20">
         <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
           <div className="reveal text-center">
             <p
