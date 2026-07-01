@@ -91,7 +91,7 @@ function ContactPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {/* Phone */}
             <a
-              href="tel:+919826470984"
+              href="tel:+918770147377"
               className="reveal card-premium group flex flex-col items-center text-center p-8 cursor-pointer"
             >
               <div
@@ -149,7 +149,7 @@ function ContactPage() {
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/919826470984?text=Hello%20Karom%20Industries%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products."
+              href="https://wa.me/918770147377?text=Hello%20Karom%20Industries%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products."
               target="_blank"
               rel="noreferrer"
               className="reveal delay-200 card-premium group flex flex-col items-center text-center p-8 cursor-pointer"
@@ -232,7 +232,7 @@ function ContactPage() {
                   <div>
                     <p className="text-sm font-semibold text-foreground">Phone</p>
                     <a
-                      href="tel:+919826470984"
+                      href="tel:+918770147377"
                       className="mt-1 block text-sm text-muted-foreground hover:text-brand-gold transition-colors"
                     >
                       +91 98264 70984
@@ -335,7 +335,7 @@ function ContactPage() {
               {/* Quick CTA */}
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href="https://wa.me/919826470984?text=Hello%20Karom%2C%20I%20am%20interested%20in%20your%20products."
+                  href="https://wa.me/918770147377?text=Hello%20Karom%2C%20I%20am%20interested%20in%20your%20products."
                   target="_blank"
                   rel="noreferrer"
                   className="btn-shimmer inline-flex min-h-11 items-center rounded-xl px-5 py-2 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"

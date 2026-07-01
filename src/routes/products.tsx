@@ -14,6 +14,7 @@ import whiteFloorCleaner from "@/assets/white-floor-cleaner.png";
 import makhanaLaddu from "@/assets/makhana-laddu.png";
 import sattuLaddu from "@/assets/sattu-laddu.png";
 import sattuJaggeryBlocks from "@/assets/sattu-jaggery-blocks.png";
+import blackCleaner from "@/assets/black-cleaner.png";
 
 interface Product {
   name: string;
@@ -160,14 +161,14 @@ const products: Product[] = [
     badge: "Bulk",
   },
   {
-    name: "Karom Evolution Deep Clean",
+    name: "Karom Black Cleaner",
     category: "Household",
     subCategory: "Professional Cleaning",
     packSize: "5L",
     price: "₹120",
     description:
       "Heavy-duty deep cleaning solution designed for commercial-scale hygiene needs.",
-    image: whiteFloorCleaner,
+    image: blackCleaner,
     badge: "Pro",
   },
   {
@@ -591,7 +592,7 @@ function ProductsPage() {
                     Inquire Now
                   </Link>
                   <a
-                    href={`https://wa.me/919826470984?text=${encodeURIComponent(`Hello Karom, I want details for ${selectedProduct.name} (${selectedProduct.packSize}).`)}`}
+                    href={`https://wa.me/918770147377?text=${encodeURIComponent(`Hello Karom, I want details for ${selectedProduct.name} (${selectedProduct.packSize}).`)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex min-h-11 items-center rounded-xl border border-border bg-surface px-5 py-2 text-sm font-semibold text-foreground transition-all duration-300 hover:bg-accent hover:scale-105"
