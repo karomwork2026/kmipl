@@ -14,6 +14,7 @@ import whiteFloorCleaner from "@/assets/white-floor-cleaner.png";
 import makhanaLaddu from "@/assets/makhana-laddu.png";
 import sattuLaddu from "@/assets/sattu-laddu.png";
 import sattuJaggeryBlocks from "@/assets/sattu-jaggery-blocks.png";
+import blackCleaner from "@/assets/black-cleaner.png";
 
 interface Product {
   name: string;
