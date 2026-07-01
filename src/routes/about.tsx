@@ -209,7 +209,7 @@ function AboutPage() {
               {
                 emoji: "💰",
                 title: "Affordable Quality",
-                desc: "Premium outcomes at practical prices for households and institutions in Tier-2 and Tier-3 markets.",
+                desc: "Premium outcomes at practical prices for households and institutions in Indian markets.",
                 delay: "delay-300",
               },
               {
@@ -348,7 +348,7 @@ function AboutPage() {
               {
                 icon: "🏪",
                 title: "Retail Stores",
-                desc: "Direct presence in neighborhood retail outlets across tier-2 and tier-3 cities.",
+                desc: "Direct presence in neighborhood retail outlets.",
               },
               {
                 icon: "🏫",

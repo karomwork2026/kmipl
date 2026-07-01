@@ -163,7 +163,7 @@ function HomePage() {
               </h1>
               <p className="animate-fade-in-up delay-200 text-lg font-medium leading-relaxed text-muted-foreground max-w-lg">
                 Karom Industries delivers healthy nutrition and hygiene products built for families,
-                retailers, schools, and institutions in Tier-2 and Tier-3 India.
+                retailers, schools, and institutions in India.
               </p>
               
               <div className="animate-fade-in-up delay-300 flex flex-wrap gap-4 pt-2">
@@ -263,7 +263,7 @@ function HomePage() {
               {
                 emoji: "💰",
                 title: "Affordable Pricing",
-                desc: "Premium nutrition and cleaning essentials priced for everyday Indian households in Tier-2 and Tier-3 cities.",
+                desc: "Premium nutrition and cleaning essentials priced for everyday Indian households in India.",
                 delay: "delay-300",
               },
             ].map((item) => (
@@ -411,7 +411,7 @@ function HomePage() {
               {
                 icon: "🎯",
                 title: "Affordable Quality",
-                desc: "Premium outcomes at practical prices for consumers in Tier-2 and Tier-3 markets.",
+                desc: "Premium outcomes at practical prices for consumers in Indian markets.",
                 gradient: "from-blue-500/10 to-transparent",
               },
             ].map((item, idx) => (
