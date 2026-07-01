@@ -217,7 +217,7 @@ function HomePage() {
                        ✓
                      </div>
                      <div>
-                       <p className="text-sm font-bold text-foreground">100% Hygenic</p>
+                       <p className="text-sm font-bold text-foreground">100% Hygienic</p>
                        <p className="text-xs font-semibold text-muted-foreground">Enviroment Friendly</p>
                      </div>
                    </div>
