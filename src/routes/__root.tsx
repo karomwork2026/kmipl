@@ -401,7 +401,7 @@ function SiteFooter() {
           </h2>
           <div className="space-y-3 text-sm text-muted-foreground">
             <a
-              href="tel:+919826470984"
+              href="tel:+918770147377"
               className="flex items-center gap-2 transition-colors hover:text-brand-gold"
             >
               <Phone size={14} className="text-brand-gold shrink-0" />

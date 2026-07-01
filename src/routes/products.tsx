@@ -591,7 +591,7 @@ function ProductsPage() {
                     Inquire Now
                   </Link>
                   <a
-                    href={`https://wa.me/919826470984?text=${encodeURIComponent(`Hello Karom, I want details for ${selectedProduct.name} (${selectedProduct.packSize}).`)}`}
+                    href={`https://wa.me/918770147377?text=${encodeURIComponent(`Hello Karom, I want details for ${selectedProduct.name} (${selectedProduct.packSize}).`)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex min-h-11 items-center rounded-xl border border-border bg-surface px-5 py-2 text-sm font-semibold text-foreground transition-all duration-300 hover:bg-accent hover:scale-105"
