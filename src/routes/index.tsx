@@ -217,8 +217,8 @@ function HomePage() {
                        ✓
                      </div>
                      <div>
-                       <p className="text-sm font-bold text-foreground">100% Natural</p>
-                       <p className="text-xs font-semibold text-muted-foreground">No refined sugar</p>
+                       <p className="text-sm font-bold text-foreground">100% Hygenic</p>
+                       <p className="text-xs font-semibold text-muted-foreground">Enviroment Friendly</p>
                      </div>
                    </div>
                  </div>
