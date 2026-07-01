@@ -431,6 +431,82 @@ function SiteFooter() {
   );
 }
 
+function GlobalBackdrop() {
+  const [y, setY] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setY(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(1200px 800px at 15% -10%, oklch(0.95 0.05 130 / 0.55), transparent 60%), radial-gradient(1000px 700px at 110% 10%, oklch(0.88 0.09 85 / 0.35), transparent 60%), radial-gradient(900px 700px at 50% 110%, oklch(0.92 0.07 137 / 0.4), transparent 60%), linear-gradient(180deg, oklch(0.985 0.008 98.5), oklch(0.96 0.02 105))",
+        }}
+      />
+      <svg className="absolute inset-0 h-full w-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+            <path d="M 48 0 L 0 0 0 48" fill="none" stroke="oklch(0.38 0.11 137)" strokeWidth="1" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
+      <div
+        className="absolute -top-40 -left-32 h-[520px] w-[520px] rounded-full blur-3xl"
+        style={{
+          transform: `translate3d(0, ${y * 0.15}px, 0)`,
+          background: "radial-gradient(circle, oklch(0.80 0.12 85 / 0.35), transparent 65%)",
+        }}
+      />
+      <div
+        className="absolute top-[30%] -right-40 h-[600px] w-[600px] rounded-full blur-3xl"
+        style={{
+          transform: `translate3d(0, ${y * -0.12}px, 0)`,
+          background: "radial-gradient(circle, oklch(0.55 0.14 137 / 0.28), transparent 65%)",
+        }}
+      />
+      <div
+        className="absolute bottom-[-10%] left-[20%] h-[500px] w-[500px] rounded-full blur-3xl"
+        style={{
+          transform: `translate3d(0, ${y * 0.08}px, 0)`,
+          background: "radial-gradient(circle, oklch(0.75 0.10 75 / 0.30), transparent 65%)",
+        }}
+      />
+      <svg
+        className="absolute inset-0 h-full w-full opacity-[0.05]"
+        viewBox="0 0 1200 900"
+        preserveAspectRatio="xMidYMid slice"
+        style={{ transform: `translate3d(0, ${y * -0.05}px, 0)` }}
+      >
+        <g fill="none" stroke="oklch(0.38 0.11 137)" strokeWidth="1.2">
+          <circle cx="180" cy="220" r="90" />
+          <circle cx="960" cy="180" r="140" />
+          <circle cx="640" cy="720" r="180" />
+          <path d="M100 600 Q 300 500 500 620 T 900 640" />
+          <path d="M200 100 Q 450 260 700 120 T 1150 200" />
+        </g>
+      </svg>
+      <img
+        src={logo}
+        alt=""
+        className="absolute right-[-4%] bottom-[10%] w-[420px] max-w-[45vw] opacity-[0.04]"
+        style={{ transform: `translate3d(0, ${y * -0.06}px, 0)` }}
+      />
+      <svg className="absolute inset-0 h-full w-full opacity-[0.035] mix-blend-multiply">
+        <filter id="noise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noise)" />
+      </svg>
+    </div>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
@@ -438,7 +514,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="relative min-h-screen text-foreground">
+        <GlobalBackdrop />
         <SiteHeader />
         <main id="main-content" className="min-h-[calc(100vh-16rem)]">
           <Outlet />

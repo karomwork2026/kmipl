@@ -97,7 +97,7 @@ function AboutPage() {
       </section>
 
       {/* ─── MAIN ABOUT CONTENT ─── */}
-      <section className="relative bg-background py-20 overflow-hidden">
+      <section className="relative bg-transparent py-20 overflow-hidden">
         <div className="section-divider" />
 
         {/* Watermark */}
@@ -173,7 +173,7 @@ function AboutPage() {
       </section>
 
       {/* ─── CORE VALUES ─── */}
-      <section className="relative bg-surface-2 py-20 overflow-hidden">
+      <section className="relative bg-surface-2/50 backdrop-blur-sm py-20 overflow-hidden">
         {/* Subtle logo pattern */}
         <div className="absolute right-0 top-0 w-72 opacity-[0.03] pointer-events-none">
           <img src={logo} alt="" className="w-full h-auto" aria-hidden="true" />
@@ -285,7 +285,7 @@ function AboutPage() {
       </section>
 
       {/* ─── VISION & MISSION ─── */}
-      <section className="bg-background py-20">
+      <section className="bg-transparent py-20">
         <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 md:grid-cols-2 md:px-6">
           <article className="reveal card-premium group p-8">
             <div
@@ -330,7 +330,7 @@ function AboutPage() {
       </section>
 
       {/* ─── DISTRIBUTION NETWORK ─── */}
-      <section className="bg-surface-2 py-20">
+      <section className="bg-surface-2/50 backdrop-blur-sm py-20">
         <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
           <div className="reveal text-center">
             <p
