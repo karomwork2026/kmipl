@@ -161,14 +161,14 @@ const products: Product[] = [
     badge: "Bulk",
   },
   {
-    name: "Karom Evolution Deep Clean",
+    name: "Karom Black Cleaner",
     category: "Household",
     subCategory: "Professional Cleaning",
     packSize: "5L",
     price: "₹120",
     description:
       "Heavy-duty deep cleaning solution designed for commercial-scale hygiene needs.",
-    image: whiteFloorCleaner,
+    image: blackCleaner,
     badge: "Pro",
   },
   {
