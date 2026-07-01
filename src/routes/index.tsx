@@ -6,6 +6,7 @@ import handWash from "@/assets/hand-wash.png";
 import toiletCleaner from "@/assets/toilet-cleaner.png";
 import waterBlack from "@/assets/wet-plus-water-black.png";
 import heroBg from "@/assets/farm-hero.jpg";
+import heroImage from "@/assets/hero-image.png";
 import makhanaLaddu from "@/assets/makhana-laddu.png";
 import sattuLaddu from "@/assets/sattu-laddu.png";
 import sattuJaggeryBlocks from "@/assets/sattu-jaggery-blocks.png";
@@ -205,7 +206,7 @@ function HomePage() {
               <div className="relative aspect-square md:aspect-[4/3] lg:aspect-[4/3] overflow-hidden rounded-3xl bg-surface-2 shadow-2xl">
                  {/* Main hero image */}
                  <img
-                   src={makhanaLaddu} 
+                   src={heroImage} 
                    alt="Karom Premium Products"
                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                  />

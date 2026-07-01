@@ -205,7 +205,7 @@ const filterIcons: Record<string, string> = {
 };
 
 /* ─── Scroll reveal utility ─── */
-function useReveal() {
+function useReveal(deps: any[] = []) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -223,11 +223,13 @@ function useReveal() {
 
     const el = ref.current;
     if (el) {
+      // First, remove "revealed" from all elements to reset animation if needed
+      // Actually, just observe them
       el.querySelectorAll(".reveal").forEach((child) => observer.observe(child));
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, deps);
 
   return ref;
 }
@@ -261,7 +263,7 @@ function ProductsPage() {
   const [activeFilter, setActiveFilter] = useState<FilterType>("All Products");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const pageRef = useReveal();
+  const pageRef = useReveal([activeFilter, searchTerm]);
 
   const visibleProducts = useMemo(() => {
     return products.filter((product) => {
