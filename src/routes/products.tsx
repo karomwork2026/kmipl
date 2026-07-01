@@ -293,7 +293,7 @@ function ProductsPage() {
   return (
     <div ref={pageRef}>
       {/* ─── PAGE HEADER ─── */}
-      <section className="relative overflow-hidden border-b border-border bg-surface py-16 md:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-surface/60 backdrop-blur-sm py-16 md:py-20">
         {/* Watermark */}
         <div className="absolute right-4 md:right-12 top-1/2 -translate-y-1/2 w-32 md:w-56 opacity-[0.05] pointer-events-none">
           <img src={logo} alt="" className="w-full h-auto" aria-hidden="true" />
@@ -362,7 +362,7 @@ function ProductsPage() {
       </section>
 
       {/* ─── PRODUCT GRID ─── */}
-      <section className="bg-background py-16">
+      <section className="bg-transparent py-16">
         <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
           <div className="mb-6 flex items-center justify-between">
             <p className="text-sm text-muted-foreground">

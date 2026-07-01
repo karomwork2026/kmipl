@@ -62,7 +62,7 @@ function ContactPage() {
   return (
     <div ref={pageRef}>
       {/* ─── HERO HEADER ─── */}
-      <section className="relative overflow-hidden border-b border-border bg-surface py-16 md:py-20">
+      <section className="relative overflow-hidden border-b border-border bg-surface/60 backdrop-blur-sm py-16 md:py-20">
         {/* Watermark */}
         <div className="absolute right-4 md:right-16 top-1/2 -translate-y-1/2 w-36 md:w-60 opacity-[0.05] pointer-events-none">
           <img src={logo} alt="" className="w-full h-auto" aria-hidden="true" />
@@ -86,7 +86,7 @@ function ContactPage() {
       </section>
 
       {/* ─── CONTACT METHODS ─── */}
-      <section className="bg-background py-16">
+      <section className="bg-transparent py-16">
         <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {/* Phone */}
@@ -182,7 +182,7 @@ function ContactPage() {
       </section>
 
       {/* ─── BUSINESS DETAILS + INQUIRY TYPES ─── */}
-      <section className="bg-surface-2 py-16">
+      <section className="bg-surface-2/50 backdrop-blur-sm py-16">
         <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
           <div className="grid gap-6 md:grid-cols-2">
             {/* Business Information */}
@@ -360,7 +360,7 @@ function ContactPage() {
       </section>
 
       {/* ─── MAP SECTION ─── */}
-      <section className="bg-background py-16">
+      <section className="bg-transparent py-16">
         <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
           <div className="reveal text-center mb-8">
             <p
