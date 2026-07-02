@@ -405,7 +405,7 @@ function SiteFooter() {
               className="flex items-center gap-2 transition-colors hover:text-brand-gold"
             >
               <Phone size={14} className="text-brand-gold shrink-0" />
-              +91 98264 70984
+              +91 87701 47377
             </a>
             <a
               href="mailto:karominfo@kacpl.in"
@@ -450,13 +450,13 @@ function GlobalBackdrop() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(1200px 800px at 15% -10%, oklch(0.95 0.05 130 / 0.55), transparent 60%), radial-gradient(1000px 700px at 110% 10%, oklch(0.88 0.09 85 / 0.35), transparent 60%), radial-gradient(900px 700px at 50% 110%, oklch(0.92 0.07 137 / 0.4), transparent 60%), linear-gradient(180deg, oklch(0.985 0.008 98.5), oklch(0.96 0.02 105))",
+            "radial-gradient(1200px 800px at 15% -10%, oklch(0.97 0.03 130 / 0.4), transparent 60%), radial-gradient(1000px 700px at 110% 10%, oklch(0.94 0.05 85 / 0.25), transparent 60%), radial-gradient(900px 700px at 50% 110%, oklch(0.96 0.04 137 / 0.3), transparent 60%), linear-gradient(180deg, oklch(0.99 0.005 98.5), oklch(0.975 0.012 105))",
         }}
       />
-      <svg className="absolute inset-0 h-full w-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
+      <svg className="absolute inset-0 h-full w-full opacity-[0.035]" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
-            <path d="M 48 0 L 0 0 0 48" fill="none" stroke="oklch(0.38 0.11 137)" strokeWidth="1" />
+          <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+            <path d="M 56 0 L 0 0 0 56" fill="none" stroke="oklch(0.38 0.11 137)" strokeWidth="1" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
@@ -465,22 +465,27 @@ function GlobalBackdrop() {
         className="absolute -top-40 -left-32 h-[520px] w-[520px] rounded-full blur-3xl"
         style={{
           transform: `translate3d(0, ${y * 0.15}px, 0)`,
-          background: "radial-gradient(circle, oklch(0.80 0.12 85 / 0.35), transparent 65%)",
+          background: "radial-gradient(circle, oklch(0.80 0.12 85 / 0.18), transparent 65%)",
         }}
       />
       <div
         className="absolute top-[30%] -right-40 h-[600px] w-[600px] rounded-full blur-3xl"
         style={{
           transform: `translate3d(0, ${y * -0.12}px, 0)`,
-          background: "radial-gradient(circle, oklch(0.55 0.14 137 / 0.28), transparent 65%)",
+          background: "radial-gradient(circle, oklch(0.55 0.14 137 / 0.14), transparent 65%)",
         }}
       />
       <div
         className="absolute bottom-[-10%] left-[20%] h-[500px] w-[500px] rounded-full blur-3xl"
         style={{
           transform: `translate3d(0, ${y * 0.08}px, 0)`,
-          background: "radial-gradient(circle, oklch(0.75 0.10 75 / 0.30), transparent 65%)",
+          background: "radial-gradient(circle, oklch(0.75 0.10 75 / 0.16), transparent 65%)",
         }}
+      />
+      {/* Soft readability veil to keep text contrast strong */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(180deg, oklch(1 0 0 / 0.35), oklch(1 0 0 / 0.5))" }}
       />
       <svg
         className="absolute inset-0 h-full w-full opacity-[0.05]"
