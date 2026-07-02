@@ -226,7 +226,7 @@ function HomePage() {
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-border bg-transparent px-7 py-3 text-sm font-bold text-foreground transition-all duration-300 hover:border-brand-gold hover:bg-surface-2 hover:scale-105"
+                  className="inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-white/30 bg-white/5 px-7 py-3 text-sm font-bold text-white backdrop-blur transition-all duration-300 hover:border-brand-gold hover:bg-white/10 hover:scale-105"
                 >
                   Learn More
                 </Link>
@@ -235,11 +235,11 @@ function HomePage() {
               {/* Inline stats (Moved below text in left col) */}
               <div className="animate-fade-in-up delay-400 mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="pt-4 border-t border-border">
-                    <p className="text-2xl font-extrabold" style={{ color: "oklch(0.65 0.12 75)" }}>
+                  <div key={stat.label} className="pt-4 border-t border-white/20">
+                    <p className="text-2xl font-extrabold" style={{ color: "oklch(0.88 0.14 85)" }}>
                       {stat.value}
                     </p>
-                    <p className="mt-1 text-[11px] font-bold text-muted-foreground uppercase tracking-wider">
+                    <p className="mt-1 text-[11px] font-bold text-white/70 uppercase tracking-wider">
                       {stat.label}
                     </p>
                   </div>
