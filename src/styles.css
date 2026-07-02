@@ -179,6 +179,53 @@
   50% { background-position: 100% 50%; }
 }
 
+@keyframes drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(30px, -20px, 0) scale(1.08); }
+}
+
+@keyframes drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-25px, 15px, 0) scale(1.1); }
+}
+
+@keyframes wave-shift {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -400; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes caret-blink {
+  0%, 100% { border-right-color: transparent; }
+  50% { border-right-color: currentColor; }
+}
+
+.animate-drift-a { animation: drift-a 12s ease-in-out infinite; }
+.animate-drift-b { animation: drift-b 15s ease-in-out infinite; }
+
+.animate-wave { stroke-dasharray: 8 6; animation: wave-shift 14s linear infinite; }
+
+.typewriter-line {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  border-right: 2px solid currentColor;
+  width: 0;
+  animation: typewriter 2s steps(28, end) forwards, caret-blink 0.9s step-end infinite;
+}
+.typewriter-line.tw-2 { animation-delay: 2s, 2s; }
+.typewriter-line.tw-3 { animation-delay: 4s, 4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift-a, .animate-drift-b, .animate-wave { animation: none; }
+  .typewriter-line { width: 100%; border-right-color: transparent; animation: none; }
+}
+
 /* ─── Animation Utility Classes ─── */
 
 .animate-fade-in-up {
