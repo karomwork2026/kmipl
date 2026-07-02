@@ -11,6 +11,7 @@ import toiletCleaner from "@/assets/toilet-cleaner.png";
 import waterBlack from "@/assets/wet-plus-water-black.png";
 import waterRed from "@/assets/wet-plus-water-red.png";
 import whiteFloorCleaner from "@/assets/white-floor-cleaner.png";
+import whiteFloorCleaner5L from "@/assets/KAROM WHITE FLOOR CLEANER 5L.png";
 import makhanaLaddu from "@/assets/makhana-laddu.png";
 import sattuLaddu from "@/assets/sattu-laddu.png";
 import sattuJaggeryBlocks from "@/assets/sattu-jaggery-blocks.png";
@@ -150,7 +151,19 @@ const products: Product[] = [
     badge: "Value Pack",
   },
   {
-    name: "Karom Black Cleaner",
+    name: "Karom White Floor Cleaner",
+    category: "Household",
+    subCategory: "Floor Care",
+    packSize: "5L",
+    price: "₹180",
+    mrp: "₹350",
+    description:
+      "Economical bulk floor cleaner suitable for tiles, marble, granite, and cement floors. Ideal for large spaces.",
+    image: whiteFloorCleaner5L,
+    badge: "Bulk Pack",
+  },
+  {
+    name: "Karom Black Floor Cleaner",
     category: "Household",
     subCategory: "Professional Cleaning",
     packSize: "5L",
@@ -315,17 +328,16 @@ function ProductsPage() {
                   key={filter}
                   type="button"
                   onClick={() => setActiveFilter(filter)}
-                  className={`inline-flex min-h-11 items-center gap-2 rounded-xl border px-5 text-sm font-medium transition-all duration-300 hover:scale-105 ${
-                    active
+                  className={`inline-flex min-h-11 items-center gap-2 rounded-xl border px-5 text-sm font-medium transition-all duration-300 hover:scale-105 ${active
                       ? "border-transparent text-cta-foreground font-semibold shadow-md"
                       : "border-border bg-card text-foreground hover:border-brand-gold hover:shadow-sm"
-                  }`}
+                    }`}
                   style={
                     active
                       ? {
-                          background:
-                            "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
-                        }
+                        background:
+                          "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
+                      }
                       : undefined
                   }
                   aria-pressed={active}
