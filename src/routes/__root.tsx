@@ -69,25 +69,77 @@ function ScrollToTop() {
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-[60vh] items-center justify-center px-4">
-      <div className="max-w-md text-center animate-fade-in-up">
-        <h1 className="text-8xl font-bold text-gradient-gold">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+    <div className="flex min-h-[80vh] items-center justify-center px-4">
+      <div className="max-w-lg w-full text-center">
+        {/* Animated 404 number */}
+        <div className="relative inline-block">
+          <p
+            className="text-[9rem] font-extrabold leading-none select-none"
+            style={{
+              background: "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75), oklch(0.88 0.08 85))",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              filter: "drop-shadow(0 4px 24px oklch(0.80 0.12 85 / 0.3))",
+            }}
+          >
+            404
+          </p>
+          {/* Floating dots */}
+          <span
+            className="absolute -top-3 -right-3 h-5 w-5 rounded-full animate-pulse"
+            style={{ background: "oklch(0.80 0.12 85 / 0.6)" }}
+          />
+          <span
+            className="absolute bottom-4 -left-4 h-3 w-3 rounded-full animate-pulse"
+            style={{ background: "oklch(0.65 0.12 75 / 0.5)", animationDelay: "0.5s" }}
+          />
+        </div>
+
+        {/* Gold divider */}
+        <div
+          className="mx-auto my-6 h-[3px] w-24 rounded-full"
+          style={{
+            background: "linear-gradient(90deg, transparent, oklch(0.80 0.12 85), transparent)",
+          }}
+        />
+
+        <h1 className="text-2xl font-bold text-foreground">Page Not Found</h1>
+        <p className="mt-3 text-base leading-7 text-muted-foreground max-w-sm mx-auto">
+          The page you&apos;re looking for doesn&apos;t exist or may have been moved.
+          Let&apos;s get you back on track.
         </p>
-        <div className="mt-6">
+
+        {/* Quick nav links */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/"
-            className="btn-shimmer inline-flex min-h-11 items-center justify-center rounded-lg px-6 py-2 text-sm font-semibold transition-all duration-300 hover:scale-105"
+            className="btn-shimmer inline-flex min-h-11 items-center justify-center rounded-xl px-6 py-2.5 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
             style={{
               background: "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
               color: "oklch(0.18 0.02 80)",
             }}
           >
-            Go home
+            🏠 Go Home
+          </Link>
+          <Link
+            to="/products"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-card px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-brand-gold hover:scale-105"
+          >
+            Browse Products
+          </Link>
+          <Link
+            to="/contact"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-card px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-brand-gold hover:scale-105"
+          >
+            Contact Us
           </Link>
         </div>
+
+        {/* Hint */}
+        <p className="mt-8 text-xs text-muted-foreground">
+          Error code: <span className="font-mono font-semibold">404</span> &middot; Page not found
+        </p>
       </div>
     </div>
   );
@@ -97,84 +149,131 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    try {
+      reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    } catch {
+      // Silently ignore errors from the error reporter itself
+    }
   }, [error]);
 
+  const isNetworkError =
+    error.message?.toLowerCase().includes("network") ||
+    error.message?.toLowerCase().includes("fetch") ||
+    (!navigator.onLine);
+
   return (
-    <div className="flex min-h-[60vh] items-center justify-center px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">This page didn&apos;t load</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+    <div className="flex min-h-[80vh] items-center justify-center px-4">
+      <div className="max-w-lg w-full text-center">
+        {/* Icon */}
+        <div
+          className="mx-auto flex h-24 w-24 items-center justify-center rounded-full text-4xl"
+          style={{
+            background: "linear-gradient(135deg, oklch(0.61 0.21 27 / 0.12), oklch(0.61 0.21 27 / 0.06))",
+            border: "2px solid oklch(0.61 0.21 27 / 0.2)",
+          }}
+        >
+          {isNetworkError ? "📡" : "⚠️"}
+        </div>
+
+        {/* Gold divider */}
+        <div
+          className="mx-auto my-6 h-[3px] w-24 rounded-full"
+          style={{
+            background: "linear-gradient(90deg, transparent, oklch(0.80 0.12 85), transparent)",
+          }}
+        />
+
+        <h1 className="text-2xl font-bold text-foreground">
+          {isNetworkError ? "Network Error" : "Something Went Wrong"}
+        </h1>
+        <p className="mt-3 text-sm leading-7 text-muted-foreground max-w-sm mx-auto">
+          {isNetworkError
+            ? "We couldn't connect to the server. Please check your internet connection and try again."
+            : "An unexpected error occurred on our end. You can try refreshing or head back home."}
         </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+
+        {/* Error details (dev) */}
+        {process.env.NODE_ENV === "development" && error.message && (
+          <p className="mt-4 rounded-lg border border-destructive/20 bg-destructive/5 px-4 py-2.5 text-xs font-mono text-destructive text-left break-all">
+            {error.message}
+          </p>
+        )}
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <button
+            type="button"
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="btn-shimmer inline-flex min-h-11 items-center justify-center rounded-xl px-6 py-2.5 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            style={{
+              background: "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
+              color: "oklch(0.18 0.02 80)",
+            }}
           >
-            Try again
+            🔄 Try Again
           </button>
           <a
             href="/"
-            className="inline-flex min-h-11 items-center justify-center rounded-lg border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-card px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-brand-gold hover:scale-105"
           >
-            Go home
+            🏠 Go Home
           </a>
         </div>
+
+        <p className="mt-8 text-xs text-muted-foreground">
+          Error code: <span className="font-mono font-semibold">500</span> &middot; Internal error
+        </p>
       </div>
     </div>
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
-  {
-    head: () => ({
-      meta: [
-        { charSet: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { title: "Karom Industries Private Limited" },
-        {
-          name: "description",
-          content:
-            "Karom Industries Private Limited offers affordable nutrition and hygiene products for Indian families and institutions.",
-        },
-        {
-          property: "og:title",
-          content: "Karom Industries Private Limited",
-        },
-        {
-          property: "og:description",
-          content:
-            "Traditional nutrition, hygienic household products, and packaged water crafted for trusted everyday use.",
-        },
-        { property: "og:type", content: "website" },
-        { name: "twitter:card", content: "summary_large_image" },
-      ],
-      links: [
-        {
-          rel: "icon",
-          href: "/favicon.png",
-          type: "image/png",
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap",
-        },
-        {
-          rel: "stylesheet",
-          href: appCss,
-        },
-      ],
-    }),
-    shellComponent: RootShell,
-    component: RootComponent,
-    notFoundComponent: NotFoundComponent,
-    errorComponent: ErrorComponent,
-  },
-);
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Karom Industries Private Limited" },
+      {
+        name: "description",
+        content:
+          "Karom Industries Private Limited offers affordable nutrition and hygiene products for Indian families and institutions.",
+      },
+      {
+        property: "og:title",
+        content: "Karom Industries Private Limited",
+      },
+      {
+        property: "og:description",
+        content:
+          "Traditional nutrition, hygienic household products, and packaged water crafted for trusted everyday use.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      {
+        rel: "icon",
+        href: "/favicon.png",
+        type: "image/png",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap",
+      },
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+    ],
+  }),
+  shellComponent: RootShell,
+  component: RootComponent,
+  notFoundComponent: NotFoundComponent,
+  errorComponent: ErrorComponent,
+});
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
@@ -352,7 +451,12 @@ function SiteFooter() {
       <div className="relative mx-auto grid w-full max-w-6xl gap-8 px-4 py-12 md:grid-cols-3 md:px-6">
         <section>
           <div className="flex items-center gap-3 mb-4">
-            <img src={logo} alt="" className="h-10 w-10 rounded-lg object-cover" aria-hidden="true" />
+            <img
+              src={logo}
+              alt=""
+              className="h-10 w-10 rounded-lg object-cover"
+              aria-hidden="true"
+            />
             <h2 className="font-heading text-lg font-bold text-foreground">
               Karom Industries <span className="text-gradient-gold">Pvt. Ltd.</span>
             </h2>
@@ -364,10 +468,16 @@ function SiteFooter() {
         </section>
 
         <section>
-          <h2 className="font-heading text-base font-semibold text-foreground mb-4">
-            Quick Links
-          </h2>
+          <h2 className="font-heading text-base font-semibold text-foreground mb-4">Quick Links</h2>
           <ul className="space-y-3 text-sm">
+            <li>
+              <Link
+                to="/"
+                className="text-muted-foreground transition-all duration-300 hover:text-brand-gold hover:pl-1"
+              >
+                Home
+              </Link>
+            </li>
             <li>
               <Link
                 to="/about"
@@ -453,7 +563,10 @@ function GlobalBackdrop() {
             "radial-gradient(1200px 800px at 15% -10%, oklch(0.97 0.03 130 / 0.4), transparent 60%), radial-gradient(1000px 700px at 110% 10%, oklch(0.94 0.05 85 / 0.25), transparent 60%), radial-gradient(900px 700px at 50% 110%, oklch(0.96 0.04 137 / 0.3), transparent 60%), linear-gradient(180deg, oklch(0.99 0.005 98.5), oklch(0.975 0.012 105))",
         }}
       />
-      <svg className="absolute inset-0 h-full w-full opacity-[0.035]" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        className="absolute inset-0 h-full w-full opacity-[0.035]"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
           <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
             <path d="M 56 0 L 0 0 0 56" fill="none" stroke="oklch(0.38 0.11 137)" strokeWidth="1" />
@@ -509,7 +622,12 @@ function GlobalBackdrop() {
       />
       <svg className="absolute inset-0 h-full w-full opacity-[0.035] mix-blend-multiply">
         <filter id="noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.9"
+            numOctaves="2"
+            stitchTiles="stitch"
+          />
         </filter>
         <rect width="100%" height="100%" filter="url(#noise)" />
       </svg>

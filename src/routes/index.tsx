@@ -16,8 +16,7 @@ const featuredProducts = [
   {
     name: "Makhana & Jaggery Laddu",
     price: "₹1000 / 1 Kg",
-    description:
-      "Traditional premium laddus with natural sweetness and wholesome nutrition.",
+    description: "Traditional premium laddus with natural sweetness and wholesome nutrition.",
     image: makhanaLaddu,
     tag: "Bestseller",
   },
@@ -32,32 +31,28 @@ const featuredProducts = [
   {
     name: "Sattu & Jaggery Barfi",
     price: "₹1000 / 1 Kg",
-    description:
-      "Nutritious traditional barfi crafted from sattu and natural jaggery.",
+    description: "Nutritious traditional barfi crafted from sattu and natural jaggery.",
     image: sattuJaggeryBlocks,
     tag: "Traditional",
   },
   {
     name: "Karom Dishwash",
     price: "₹75 / 500ml",
-    description:
-      "Strong on grease, gentle on hands for everyday kitchen use.",
+    description: "Strong on grease, gentle on hands for everyday kitchen use.",
     image: dishwash,
     tag: "Household",
   },
   {
     name: "Karom Rose Flavour Soft Wash",
     price: "₹75 / 250ml",
-    description:
-      "Gentle hand cleansing with rose freshness and skin-friendly care.",
+    description: "Gentle hand cleansing with rose freshness and skin-friendly care.",
     image: handWash,
     tag: "Hygiene",
   },
   {
     name: "Wet Plus Drinking Water",
     price: "₹10 / 500ml",
-    description:
-      "Hygienically processed drinking water for safe daily hydration.",
+    description: "Hygienically processed drinking water for safe daily hydration.",
     image: waterBlack,
     tag: "Beverage",
   },
@@ -98,34 +93,30 @@ function useReveal() {
   return ref;
 }
 
-export const Route = createFileRoute("/")(
-  {
-    head: () => ({
-      meta: [
-        {
-          title:
-            "Karom Industries | Affordable Health & Hygiene Products",
-        },
-        {
-          name: "description",
-          content:
-            "Explore Karom Industries' trusted range of healthy traditional snacks, household cleaners, and packaged drinking water.",
-        },
-        {
-          property: "og:title",
-          content:
-            "Karom Industries | Affordable Health & Hygiene Products",
-        },
-        {
-          property: "og:description",
-          content:
-            "Supporting farmers and families with hygienic, affordable, and quality-focused products across India.",
-        },
-      ],
-    }),
-    component: HomePage,
-  },
-);
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      {
+        title: "Karom Industries | Affordable Health & Hygiene Products",
+      },
+      {
+        name: "description",
+        content:
+          "Explore Karom Industries' trusted range of healthy traditional snacks, household cleaners, and packaged drinking water.",
+      },
+      {
+        property: "og:title",
+        content: "Karom Industries | Affordable Health & Hygiene Products",
+      },
+      {
+        property: "og:description",
+        content:
+          "Supporting farmers and families with hygienic, affordable, and quality-focused products across India.",
+      },
+    ],
+  }),
+  component: HomePage,
+});
 
 function HomePage() {
   const pageRef = useReveal();
@@ -145,12 +136,16 @@ function HomePage() {
         {/* Gold floating glow – top right */}
         <div
           className="absolute -right-24 -top-24 w-[480px] h-[480px] rounded-full opacity-60 blur-3xl pointer-events-none -z-10 animate-drift-a"
-          style={{ background: "radial-gradient(circle, oklch(0.85 0.14 85 / 0.55), transparent 65%)" }}
+          style={{
+            background: "radial-gradient(circle, oklch(0.85 0.14 85 / 0.55), transparent 65%)",
+          }}
         />
         {/* Green floating glow – bottom left */}
         <div
           className="absolute -left-32 -bottom-24 w-[440px] h-[440px] rounded-full opacity-45 blur-3xl pointer-events-none -z-10 animate-drift-b"
-          style={{ background: "radial-gradient(circle, oklch(0.72 0.14 137 / 0.45), transparent 65%)" }}
+          style={{
+            background: "radial-gradient(circle, oklch(0.72 0.14 137 / 0.45), transparent 65%)",
+          }}
         />
         {/* Faint grid */}
         <div
@@ -214,21 +209,22 @@ function HomePage() {
               </p>
               <h1 className="text-4xl font-extrabold leading-[1.15] text-foreground md:text-5xl lg:text-[3.5rem]">
                 <span className="typewriter-line block">Affordable Health,</span>
-                <span className="typewriter-line tw-2 block text-gradient-gold">Hygienic Quality,</span>
+                <span className="typewriter-line tw-2 block text-gradient-gold">
+                  Hygienic Quality,
+                </span>
                 <span className="typewriter-line tw-3 block">Farmer&apos;s Trust</span>
               </h1>
               <p className="animate-fade-in-up delay-200 text-base md:text-lg font-medium leading-relaxed text-muted-foreground max-w-lg">
                 Karom Industries delivers healthy nutrition and hygiene products built for families,
                 retailers, schools, and institutions in India.
               </p>
-              
+
               <div className="animate-fade-in-up delay-300 flex flex-wrap gap-4 pt-2">
                 <Link
                   to="/products"
                   className="btn-shimmer inline-flex min-h-12 items-center justify-center rounded-xl px-7 py-3 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   style={{
-                    background:
-                      "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
+                    background: "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
                     color: "oklch(0.18 0.02 80)",
                   }}
                 >
@@ -260,24 +256,32 @@ function HomePage() {
             {/* Right Column: Hero Image / Composition */}
             <div className="animate-fade-in-up delay-200 relative mx-auto w-full max-w-md lg:max-w-none">
               <div className="relative aspect-square md:aspect-[4/3] lg:aspect-[4/3] overflow-hidden rounded-3xl bg-surface-2 shadow-2xl">
-                 {/* Main hero image */}
-                 <img
-                   src={heroImage} 
-                   alt="Karom Premium Products"
-                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                 />
-                 {/* Overlay badge */}
-                 <div className="absolute bottom-6 right-6 rounded-2xl bg-white/90 backdrop-blur-md p-4 shadow-xl border border-white">
-                   <div className="flex items-center gap-3">
-                     <div className="flex h-10 w-10 items-center justify-center rounded-full font-bold text-xl" style={{ background: "oklch(0.80 0.12 85 / 0.2)", color: "oklch(0.65 0.12 75)" }}>
-                       ✓
-                     </div>
-                     <div>
-                       <p className="text-sm font-bold text-foreground">100% Hygienic</p>
-                       <p className="text-xs font-semibold text-muted-foreground">Enviroment Friendly</p>
-                     </div>
-                   </div>
-                 </div>
+                {/* Main hero image */}
+                <img
+                  src={heroImage}
+                  alt="Karom Premium Products"
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+                {/* Overlay badge */}
+                <div className="absolute bottom-6 right-6 rounded-2xl bg-white/90 backdrop-blur-md p-4 shadow-xl border border-white">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="flex h-10 w-10 items-center justify-center rounded-full font-bold text-xl"
+                      style={{
+                        background: "oklch(0.80 0.12 85 / 0.2)",
+                        color: "oklch(0.65 0.12 75)",
+                      }}
+                    >
+                      ✓
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-foreground">100% Hygienic</p>
+                      <p className="text-xs font-semibold text-muted-foreground">
+                        Environment Friendly
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -323,10 +327,7 @@ function HomePage() {
                 delay: "delay-300",
               },
             ].map((item) => (
-              <article
-                key={item.title}
-                className={`reveal ${item.delay} card-premium group p-7`}
-              >
+              <article key={item.title} className={`reveal ${item.delay} card-premium group p-7`}>
                 <div
                   className="flex h-14 w-14 items-center justify-center rounded-xl text-2xl transition-transform duration-300 group-hover:scale-110"
                   style={{
@@ -406,9 +407,7 @@ function HomePage() {
                   />
                 </div>
                 <div className="p-5">
-                  <h3 className="text-lg font-bold text-foreground leading-snug">
-                    {product.name}
-                  </h3>
+                  <h3 className="text-lg font-bold text-foreground leading-snug">{product.name}</h3>
                   <p
                     className="mt-1.5 text-base font-bold"
                     style={{ color: "oklch(0.80 0.12 85)" }}
@@ -498,29 +497,33 @@ function HomePage() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(135deg, oklch(0.25 0.08 137), oklch(0.30 0.06 80))",
+            background: "linear-gradient(135deg, oklch(0.25 0.08 137), oklch(0.30 0.06 80))",
           }}
         />
         {/* Pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `url(${logo})`, backgroundSize: "120px", backgroundRepeat: "repeat" }} />
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `url(${logo})`,
+            backgroundSize: "120px",
+            backgroundRepeat: "repeat",
+          }}
+        />
 
         <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-4 text-center md:px-6">
           <h2 className="reveal text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            Ready to Experience{" "}
-            <span className="text-gradient-gold">Healthier Living?</span>
+            Ready to Experience <span className="text-gradient-gold">Healthier Living?</span>
           </h2>
           <p className="reveal delay-100 max-w-2xl text-base leading-7 text-white/80 md:text-lg">
-            Join thousands of families choosing Karom for better health, better hygiene, and
-            better value. Your journey to traditional wellness starts here.
+            Join thousands of families choosing Karom for better health, better hygiene, and better
+            value. Your journey to traditional wellness starts here.
           </p>
           <div className="reveal delay-200 flex flex-wrap justify-center gap-4 pt-4">
             <Link
               to="/contact"
               className="btn-shimmer inline-flex min-h-12 items-center justify-center rounded-xl px-8 py-3 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl"
               style={{
-                background:
-                  "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
+                background: "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
                 color: "oklch(0.18 0.02 80)",
               }}
             >

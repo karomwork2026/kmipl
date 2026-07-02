@@ -101,21 +101,13 @@ function ContactPage() {
                     "linear-gradient(135deg, oklch(0.80 0.12 85 / 0.15), oklch(0.65 0.12 75 / 0.1))",
                 }}
               >
-                <Phone
-                  size={24}
-                  style={{ color: "oklch(0.80 0.12 85)" }}
-                />
+                <Phone size={24} style={{ color: "oklch(0.80 0.12 85)" }} />
               </div>
               <h3 className="mt-5 text-lg font-bold text-foreground">Call Us</h3>
-              <p
-                className="mt-2 text-base font-semibold"
-                style={{ color: "oklch(0.80 0.12 85)" }}
-              >
+              <p className="mt-2 text-base font-semibold" style={{ color: "oklch(0.80 0.12 85)" }}>
                 +91 87701 47377
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Available Mon–Sat, 9AM–7PM IST
-              </p>
+              <p className="mt-1 text-sm text-muted-foreground">Available Mon–Sat, 9AM–7PM IST</p>
             </a>
 
             {/* Email */}
@@ -130,21 +122,13 @@ function ContactPage() {
                     "linear-gradient(135deg, oklch(0.80 0.12 85 / 0.15), oklch(0.65 0.12 75 / 0.1))",
                 }}
               >
-                <Mail
-                  size={24}
-                  style={{ color: "oklch(0.80 0.12 85)" }}
-                />
+                <Mail size={24} style={{ color: "oklch(0.80 0.12 85)" }} />
               </div>
               <h3 className="mt-5 text-lg font-bold text-foreground">Email Us</h3>
-              <p
-                className="mt-2 text-base font-semibold"
-                style={{ color: "oklch(0.80 0.12 85)" }}
-              >
+              <p className="mt-2 text-base font-semibold" style={{ color: "oklch(0.80 0.12 85)" }}>
                 karominfo@kacpl.in
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                We respond within 24 hours
-              </p>
+              <p className="mt-1 text-sm text-muted-foreground">We respond within 24 hours</p>
             </a>
 
             {/* WhatsApp */}
@@ -161,16 +145,10 @@ function ContactPage() {
                     "linear-gradient(135deg, oklch(0.80 0.12 85 / 0.15), oklch(0.65 0.12 75 / 0.1))",
                 }}
               >
-                <MessageCircle
-                  size={24}
-                  style={{ color: "oklch(0.80 0.12 85)" }}
-                />
+                <MessageCircle size={24} style={{ color: "oklch(0.80 0.12 85)" }} />
               </div>
               <h3 className="mt-5 text-lg font-bold text-foreground">WhatsApp</h3>
-              <p
-                className="mt-2 text-base font-semibold"
-                style={{ color: "oklch(0.80 0.12 85)" }}
-              >
+              <p className="mt-2 text-base font-semibold" style={{ color: "oklch(0.80 0.12 85)" }}>
                 Chat with us
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
@@ -195,10 +173,7 @@ function ContactPage() {
                       "linear-gradient(135deg, oklch(0.80 0.12 85 / 0.15), oklch(0.65 0.12 75 / 0.1))",
                   }}
                 >
-                  <Building
-                    size={18}
-                    style={{ color: "oklch(0.80 0.12 85)" }}
-                  />
+                  <Building size={18} style={{ color: "oklch(0.80 0.12 85)" }} />
                 </div>
                 <h2 className="text-xl font-bold text-foreground">
                   Business <span className="text-gradient-gold">Information</span>
@@ -213,12 +188,10 @@ function ContactPage() {
                     style={{ color: "oklch(0.80 0.12 85)" }}
                   />
                   <div>
-                    <p className="text-sm font-semibold text-foreground">
-                      Registered Office
-                    </p>
+                    <p className="text-sm font-semibold text-foreground">Registered Office</p>
                     <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                      Villa No. 436, Omaxe City 2, Opposite DLF, Mangliya
-                      Arniya, Indore, Madhya Pradesh 453771, India
+                      Villa No. 436, Omaxe City 2, Opposite DLF, Mangliya Arniya, Indore, Madhya
+                      Pradesh 453771, India
                     </p>
                   </div>
                 </div>
@@ -264,9 +237,7 @@ function ContactPage() {
                     style={{ color: "oklch(0.80 0.12 85)" }}
                   />
                   <div>
-                    <p className="text-sm font-semibold text-foreground">
-                      Business Hours
-                    </p>
+                    <p className="text-sm font-semibold text-foreground">Business Hours</p>
                     <p className="mt-1 text-sm text-muted-foreground">
                       Mon – Sat: 9:00 AM – 7:00 PM IST
                     </p>
@@ -285,10 +256,7 @@ function ContactPage() {
                       "linear-gradient(135deg, oklch(0.80 0.12 85 / 0.15), oklch(0.65 0.12 75 / 0.1))",
                   }}
                 >
-                  <MessageCircle
-                    size={18}
-                    style={{ color: "oklch(0.80 0.12 85)" }}
-                  />
+                  <MessageCircle size={18} style={{ color: "oklch(0.80 0.12 85)" }} />
                 </div>
                 <h2 className="text-xl font-bold text-foreground">
                   Inquiry <span className="text-gradient-gold">Types</span>
@@ -321,12 +289,8 @@ function ContactPage() {
                   <div key={item.title} className="flex items-start gap-3">
                     <span className="text-lg shrink-0">{item.icon}</span>
                     <div>
-                      <p className="text-sm font-semibold text-foreground">
-                        {item.title}
-                      </p>
-                      <p className="mt-1 text-sm text-muted-foreground leading-6">
-                        {item.desc}
-                      </p>
+                      <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                      <p className="mt-1 text-sm text-muted-foreground leading-6">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -340,8 +304,7 @@ function ContactPage() {
                   rel="noreferrer"
                   className="btn-shimmer inline-flex min-h-11 items-center rounded-xl px-5 py-2 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   style={{
-                    background:
-                      "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
+                    background: "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
                     color: "oklch(0.18 0.02 80)",
                   }}
                 >

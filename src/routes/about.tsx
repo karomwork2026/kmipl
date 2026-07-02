@@ -87,8 +87,7 @@ function AboutPage() {
             About Us
           </p>
           <h1 className="animate-fade-in-up delay-100 mt-3 max-w-3xl text-4xl font-extrabold leading-[1.1] text-white md:text-5xl lg:text-6xl">
-            About <span className="text-gradient-gold">Karom Industries</span>{" "}
-            Private Limited
+            About <span className="text-gradient-gold">Karom Industries</span> Private Limited
           </h1>
           <p className="animate-fade-in-up delay-200 mt-4 text-lg font-medium text-white/80">
             Making Health Accessible to Every Indian Family
@@ -108,10 +107,8 @@ function AboutPage() {
         <div className="relative mx-auto grid w-full max-w-6xl gap-12 px-4 pt-16 md:grid-cols-[1.2fr_0.8fr] md:px-6 items-center">
           <div className="reveal">
             <p className="text-base leading-8 text-muted-foreground">
-              <strong className="text-foreground">
-                Karom Industries Private Limited
-              </strong>{" "}
-              is an Indian FMCG company committed to making{" "}
+              <strong className="text-foreground">Karom Industries Private Limited</strong> is an
+              Indian FMCG company committed to making{" "}
               <strong className="text-foreground">
                 healthy, affordable, and hygienically processed food and beverage products
               </strong>{" "}
@@ -122,8 +119,8 @@ function AboutPage() {
             <p className="mt-5 text-base leading-8 text-muted-foreground">
               Our product portfolio includes{" "}
               <strong className="text-foreground">
-                Sattu-based nutrition products, Gud (jaggery) and Raab products, Gud chocolates
-                and candies, healthy beverages, and flavored and alkaline drinking water
+                Sattu-based nutrition products, Gud (jaggery) and Raab products, Gud chocolates and
+                candies, healthy beverages, and flavored and alkaline drinking water
               </strong>
               , offering consumers healthier alternatives to refined sugar and highly processed
               foods.
@@ -148,15 +145,13 @@ function AboutPage() {
               <div
                 className="absolute -inset-4 rounded-3xl opacity-20 blur-2xl"
                 style={{
-                  background:
-                    "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
+                  background: "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
                 }}
               />
               <div
                 className="relative overflow-hidden rounded-2xl p-8 animate-pulse-glow"
                 style={{
-                  background:
-                    "linear-gradient(135deg, oklch(0.95 0.03 132), oklch(0.90 0.02 100))",
+                  background: "linear-gradient(135deg, oklch(0.95 0.03 132), oklch(0.90 0.02 100))",
                   border: "1px solid oklch(0.80 0.12 85 / 0.2)",
                 }}
               >
@@ -245,11 +240,17 @@ function AboutPage() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(135deg, oklch(0.25 0.08 137), oklch(0.30 0.06 80))",
+            background: "linear-gradient(135deg, oklch(0.25 0.08 137), oklch(0.30 0.06 80))",
           }}
         />
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `url(${logo})`, backgroundSize: "100px", backgroundRepeat: "repeat" }} />
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `url(${logo})`,
+            backgroundSize: "100px",
+            backgroundRepeat: "repeat",
+          }}
+        />
 
         <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6">
           <div className="reveal text-center">
@@ -302,9 +303,9 @@ function AboutPage() {
             </h2>
             <p className="mt-4 text-sm leading-8 text-muted-foreground">
               Become one of India&apos;s most trusted brands for traditional health foods and
-              beverages while creating a positive impact on rural livelihoods and consumer
-              wellness. We aim to be the bridge between India's agricultural heritage and
-              modern consumer needs.
+              beverages while creating a positive impact on rural livelihoods and consumer wellness.
+              We aim to be the bridge between India's agricultural heritage and modern consumer
+              needs.
             </p>
           </article>
           <article className="reveal delay-200 card-premium group p-8">

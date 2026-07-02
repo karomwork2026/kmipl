@@ -112,8 +112,7 @@ const products: Product[] = [
     packSize: "250ml",
     price: "₹75",
     mrp: "₹95",
-    description:
-      "Rose-fragranced hand wash for effective cleansing and soft-feel after each wash.",
+    description: "Rose-fragranced hand wash for effective cleansing and soft-feel after each wash.",
     image: handWash,
   },
   {
@@ -134,8 +133,7 @@ const products: Product[] = [
     packSize: "500ml",
     price: "₹75",
     mrp: "₹95",
-    description:
-      "Multipurpose floor cleaner with long-lasting freshness and hygienic performance.",
+    description: "Multipurpose floor cleaner with long-lasting freshness and hygienic performance.",
     image: floorCleaner,
   },
   {
@@ -168,8 +166,7 @@ const products: Product[] = [
     subCategory: "Professional Cleaning",
     packSize: "5L",
     price: "₹120",
-    description:
-      "Heavy-duty deep cleaning solution designed for commercial-scale hygiene needs.",
+    description: "Heavy-duty deep cleaning solution designed for commercial-scale hygiene needs.",
     image: blackCleaner,
     badge: "Pro",
   },
@@ -180,8 +177,7 @@ const products: Product[] = [
     packSize: "500ml",
     price: "₹75",
     mrp: "₹95",
-    description:
-      "Thick formula toilet cleaner that removes stains, limescale, odor, and germs.",
+    description: "Thick formula toilet cleaner that removes stains, limescale, odor, and germs.",
     image: toiletCleaner,
   },
   {
@@ -191,8 +187,7 @@ const products: Product[] = [
     packSize: "500ml",
     price: "₹75",
     mrp: "₹95",
-    description:
-      "Powerful cleaner for tiles, sinks, taps, and bathroom fittings.",
+    description: "Powerful cleaner for tiles, sinks, taps, and bathroom fittings.",
     image: bathroomCleaner,
   },
 ];
@@ -208,7 +203,7 @@ const filterIcons: Record<string, string> = {
 };
 
 /* ─── Scroll reveal utility ─── */
-function useReveal(deps: any[] = []) {
+function useReveal(deps: unknown[] = []) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -232,6 +227,7 @@ function useReveal(deps: any[] = []) {
     }
 
     return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   return ref;
@@ -270,8 +266,7 @@ function ProductsPage() {
 
   const visibleProducts = useMemo(() => {
     return products.filter((product) => {
-      const filterMatch =
-        activeFilter === "All Products" || product.category === activeFilter;
+      const filterMatch = activeFilter === "All Products" || product.category === activeFilter;
       const query = searchTerm.trim().toLowerCase();
       const searchMatch =
         query.length === 0 ||
@@ -283,15 +278,20 @@ function ProductsPage() {
     });
   }, [activeFilter, searchTerm]);
 
-  // Prevent body scroll when modal is open
+  // Prevent body scroll when modal is open + close on Escape
   useEffect(() => {
     if (selectedProduct) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedProduct(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
     };
   }, [selectedProduct]);
 
@@ -328,16 +328,17 @@ function ProductsPage() {
                   key={filter}
                   type="button"
                   onClick={() => setActiveFilter(filter)}
-                  className={`inline-flex min-h-11 items-center gap-2 rounded-xl border px-5 text-sm font-medium transition-all duration-300 hover:scale-105 ${active
+                  className={`inline-flex min-h-11 items-center gap-2 rounded-xl border px-5 text-sm font-medium transition-all duration-300 hover:scale-105 ${
+                    active
                       ? "border-transparent text-cta-foreground font-semibold shadow-md"
                       : "border-border bg-card text-foreground hover:border-brand-gold hover:shadow-sm"
-                    }`}
+                  }`}
                   style={
                     active
                       ? {
-                        background:
-                          "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
-                      }
+                          background:
+                            "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
+                        }
                       : undefined
                   }
                   aria-pressed={active}
@@ -370,9 +371,7 @@ function ProductsPage() {
         <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
           <div className="mb-6 flex items-center justify-between">
             <p className="text-sm text-muted-foreground">
-              Showing{" "}
-              <strong className="text-foreground">{visibleProducts.length}</strong>{" "}
-              products
+              Showing <strong className="text-foreground">{visibleProducts.length}</strong> products
             </p>
           </div>
 
@@ -414,11 +413,16 @@ function ProductsPage() {
                     </span>
                   )}
                   {/* MRP Savings badge */}
-                  {product.mrp && (
-                    <span className="absolute top-3 right-3 rounded-full bg-destructive/90 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur-md z-10">
-                      Save {parseInt(product.mrp.replace("₹", "")) - parseInt(product.price.replace("₹", ""))}₹
-                    </span>
-                  )}
+                  {product.mrp && (() => {
+                    const mrpVal = parseInt(product.mrp.replace(/[^0-9]/g, ""), 10);
+                    const priceVal = parseInt(product.price.replace(/[^0-9]/g, ""), 10);
+                    const saving = mrpVal - priceVal;
+                    return !isNaN(saving) && saving > 0 ? (
+                      <span className="absolute top-3 right-3 rounded-full bg-destructive/90 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur-md z-10">
+                        Save ₹{saving}
+                      </span>
+                    ) : null;
+                  })()}
                   {/* Hover overlay */}
                   <div
                     className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-400 group-hover:opacity-100"
@@ -453,10 +457,7 @@ function ProductsPage() {
                     {product.name}
                   </h2>
                   <div className="mt-1.5 flex items-center gap-2">
-                    <p
-                      className="text-lg font-bold"
-                      style={{ color: "oklch(0.80 0.12 85)" }}
-                    >
+                    <p className="text-lg font-bold" style={{ color: "oklch(0.80 0.12 85)" }}>
                       {product.price}
                     </p>
                     {product.mrp && (
@@ -508,9 +509,7 @@ function ProductsPage() {
                     {selectedProduct.badge}
                   </span>
                 )}
-                <h2 className="text-2xl font-bold text-foreground">
-                  {selectedProduct.name}
-                </h2>
+                <h2 className="text-2xl font-bold text-foreground">{selectedProduct.name}</h2>
               </div>
               <button
                 type="button"
@@ -531,37 +530,32 @@ function ProductsPage() {
                 />
               </div>
               <div>
-                <p
-                  className="text-sm font-semibold"
-                  style={{ color: "oklch(0.80 0.12 85)" }}
-                >
+                <p className="text-sm font-semibold" style={{ color: "oklch(0.80 0.12 85)" }}>
                   {selectedProduct.subCategory}
                 </p>
                 <div className="mt-2 flex items-baseline gap-3">
-                  <p
-                    className="text-2xl font-bold"
-                    style={{ color: "oklch(0.80 0.12 85)" }}
-                  >
+                  <p className="text-2xl font-bold" style={{ color: "oklch(0.80 0.12 85)" }}>
                     {selectedProduct.price}
                   </p>
                   <span className="text-sm text-muted-foreground">
                     · {selectedProduct.packSize}
                   </span>
                 </div>
-                {selectedProduct.mrp && (
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    MRP:{" "}
-                    <span className="line-through">{selectedProduct.mrp}</span>
-                    <span
-                      className="ml-2 font-semibold"
-                      style={{ color: "oklch(0.55 0.18 140)" }}
-                    >
-                      Save ₹
-                      {parseInt(selectedProduct.mrp.replace("₹", "")) -
-                        parseInt(selectedProduct.price.replace("₹", ""))}
-                    </span>
-                  </p>
-                )}
+                {selectedProduct.mrp && (() => {
+                  const mrpVal = parseInt(selectedProduct.mrp.replace(/[^0-9]/g, ""), 10);
+                  const priceVal = parseInt(selectedProduct.price.replace(/[^0-9]/g, ""), 10);
+                  const saving = mrpVal - priceVal;
+                  return (
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      MRP: <span className="line-through">{selectedProduct.mrp}</span>
+                      {!isNaN(saving) && saving > 0 && (
+                        <span className="ml-2 font-semibold" style={{ color: "oklch(0.55 0.18 140)" }}>
+                          Save ₹{saving}
+                        </span>
+                      )}
+                    </p>
+                  );
+                })()}
                 <p className="mt-4 text-sm leading-7 text-muted-foreground">
                   {selectedProduct.description}
                 </p>
