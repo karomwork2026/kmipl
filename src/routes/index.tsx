@@ -435,7 +435,116 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ─── ALSO FROM KAROM (Sister Site Promo) ─── */}
+      <section className="relative overflow-hidden py-20">
+        {/* Dark gradient bg */}
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            background:
+              "linear-gradient(135deg, oklch(0.20 0.07 137 / 0.95), oklch(0.26 0.05 100 / 0.95))",
+          }}
+        />
+        {/* Gold glow top right */}
+        <div
+          className="absolute -top-16 -right-16 h-80 w-80 rounded-full opacity-25 blur-3xl pointer-events-none -z-10"
+          style={{ background: "radial-gradient(circle, oklch(0.80 0.12 85 / 0.7), transparent 65%)" }}
+        />
+        <div className="section-divider absolute top-0 inset-x-0" />
+
+        <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6">
+          <div className="grid gap-10 md:grid-cols-2 items-center">
+            {/* Left: Text */}
+            <div className="reveal">
+              <span
+                className="inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-widest mb-4"
+                style={{
+                  background: "oklch(0.80 0.12 85 / 0.15)",
+                  color: "oklch(0.80 0.12 85)",
+                  border: "1px solid oklch(0.80 0.12 85 / 0.3)",
+                }}
+              >
+                Also From Karom
+              </span>
+              <h2 className="text-3xl font-bold text-white md:text-4xl leading-tight">
+                Wholesome Meals &amp;{" "}
+                <span className="text-gradient-gold">Healthy Living</span>
+                <br />
+                at karom.in
+              </h2>
+              <p className="mt-4 text-base leading-7 text-white/70 max-w-md">
+                Our sister marketplace brings you fresh salads, millet-based foods,
+                wellness beverages, and organic products — made with no preservatives,
+                delivered fresh to your door.
+              </p>
+              {/* Category chips */}
+              <div className="mt-6 flex flex-wrap gap-2">
+                {["🥗 Fresh Salads", "🌾 Millet Foods", "🧃 Wellness Drinks", "🫙 Organic Oils", "🥪 Sandwiches", "🍝 Healthy Pasta"].map(
+                  (chip) => (
+                    <span
+                      key={chip}
+                      className="rounded-full px-3 py-1.5 text-xs font-semibold text-white/80"
+                      style={{
+                        background: "oklch(1 0 0 / 0.08)",
+                        border: "1px solid oklch(1 0 0 / 0.15)",
+                      }}
+                    >
+                      {chip}
+                    </span>
+                  ),
+                )}
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  to="/karom-store"
+                  className="btn-shimmer inline-flex min-h-11 items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, oklch(0.80 0.12 85), oklch(0.65 0.12 75))",
+                    color: "oklch(0.18 0.02 80)",
+                  }}
+                >
+                  Explore KJW Store ✦
+                </Link>
+                <a
+                  href="https://karom.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-white/20 bg-white/8 px-6 py-2.5 text-sm font-semibold text-white/80 backdrop-blur transition-all duration-300 hover:bg-white/15 hover:text-white hover:scale-105"
+                >
+                  Visit karom.in ↗
+                </a>
+              </div>
+            </div>
+
+            {/* Right: Stat cards */}
+            <div className="reveal delay-200 grid grid-cols-2 gap-4">
+              {[
+                { emoji: "🥗", label: "Fresh Salads", sub: "Crisp & Nutritious" },
+                { emoji: "🌾", label: "Millet Foods", sub: "Low Calorie, High Fibre" },
+                { emoji: "🧃", label: "Wellness Drinks", sub: "Energy & Immunity" },
+                { emoji: "🫙", label: "Organic Oils", sub: "Cold-Pressed & Pure" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl p-5 flex flex-col gap-2 transition-all duration-300 hover:scale-105"
+                  style={{
+                    background: "oklch(1 0 0 / 0.06)",
+                    border: "1px solid oklch(1 0 0 / 0.12)",
+                  }}
+                >
+                  <span className="text-2xl">{item.emoji}</span>
+                  <p className="text-sm font-bold text-white">{item.label}</p>
+                  <p className="text-[11px] text-white/55">{item.sub}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── CORE PRINCIPLES ─── */}
+
       <section className="bg-transparent py-20">
         <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
           <div className="reveal text-center">

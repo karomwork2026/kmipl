@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as KaromStoreRouteImport } from './routes/karom-store'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as SplatRouteImport } from './routes/$'
@@ -24,6 +25,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KaromStoreRoute = KaromStoreRouteImport.update({
+  id: '/karom-store',
+  path: '/karom-store',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/karom-store': typeof KaromStoreRoute
   '/products': typeof ProductsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/karom-store': typeof KaromStoreRoute
   '/products': typeof ProductsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -69,20 +77,36 @@ export interface FileRoutesById {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/karom-store': typeof KaromStoreRoute
   '/products': typeof ProductsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$' | '/about' | '/contact' | '/products' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/about'
+    | '/contact'
+    | '/karom-store'
+    | '/products'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$' | '/about' | '/contact' | '/products' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/$'
+    | '/about'
+    | '/contact'
+    | '/karom-store'
+    | '/products'
+    | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
     | '/$'
     | '/about'
     | '/contact'
+    | '/karom-store'
     | '/products'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
@@ -92,6 +116,7 @@ export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  KaromStoreRoute: typeof KaromStoreRoute
   ProductsRoute: typeof ProductsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -110,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/products'
       fullPath: '/products'
       preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/karom-store': {
+      id: '/karom-store'
+      path: '/karom-store'
+      fullPath: '/karom-store'
+      preLoaderRoute: typeof KaromStoreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -148,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  KaromStoreRoute: KaromStoreRoute,
   ProductsRoute: ProductsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }

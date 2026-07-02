@@ -299,6 +299,7 @@ function SiteHeader() {
       { to: "/", label: "Home" },
       { to: "/about", label: "About" },
       { to: "/products", label: "Products" },
+      { to: "/karom-store", label: "KJW Store ✦" },
       { to: "/contact", label: "Contact" },
     ],
     [],
@@ -492,6 +493,14 @@ function SiteFooter() {
                 className="text-muted-foreground transition-all duration-300 hover:text-brand-gold hover:pl-1"
               >
                 Our Products
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/karom-store"
+                className="text-muted-foreground transition-all duration-300 hover:text-brand-gold hover:pl-1"
+              >
+                KJW Store ✦
               </Link>
             </li>
             <li>
