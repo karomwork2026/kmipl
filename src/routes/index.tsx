@@ -197,17 +197,17 @@ function HomePage() {
             <div className="flex flex-col gap-6 lg:pr-8">
               <p
                 className="animate-fade-in-up text-sm font-bold uppercase tracking-[0.2em]"
-                style={{ color: "oklch(0.65 0.12 75)" }}
+                style={{ color: "oklch(0.88 0.14 85)" }}
               >
                 Traditional Nutrition for Modern India
               </p>
-              <h1 className="animate-fade-in-up delay-100 text-5xl font-extrabold leading-[1.1] text-foreground md:text-6xl lg:text-[4rem]">
+              <h1 className="animate-fade-in-up delay-100 text-5xl font-extrabold leading-[1.1] text-white md:text-6xl lg:text-[4rem]">
                 Affordable Health, <br/>
                 <span className="text-gradient-gold">Hygienic Quality</span>,
                 <br />
                 Farmer&apos;s Trust
               </h1>
-              <p className="animate-fade-in-up delay-200 text-lg font-medium leading-relaxed text-muted-foreground max-w-lg">
+              <p className="animate-fade-in-up delay-200 text-lg font-medium leading-relaxed text-white/80 max-w-lg">
                 Karom Industries delivers healthy nutrition and hygiene products built for families,
                 retailers, schools, and institutions in India.
               </p>
