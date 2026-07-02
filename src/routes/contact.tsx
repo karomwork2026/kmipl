@@ -111,7 +111,7 @@ function ContactPage() {
                 className="mt-2 text-base font-semibold"
                 style={{ color: "oklch(0.80 0.12 85)" }}
               >
-                +91 98264 70984
+                +91 87701 47377
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
                 Available Mon–Sat, 9AM–7PM IST
@@ -235,7 +235,7 @@ function ContactPage() {
                       href="tel:+918770147377"
                       className="mt-1 block text-sm text-muted-foreground hover:text-brand-gold transition-colors"
                     >
-                      +91 98264 70984
+                      +91 87701 47377
                     </a>
                   </div>
                 </div>

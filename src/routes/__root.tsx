@@ -405,7 +405,7 @@ function SiteFooter() {
               className="flex items-center gap-2 transition-colors hover:text-brand-gold"
             >
               <Phone size={14} className="text-brand-gold shrink-0" />
-              +91 98264 70984
+              +91 87701 47377
             </a>
             <a
               href="mailto:karominfo@kacpl.in"

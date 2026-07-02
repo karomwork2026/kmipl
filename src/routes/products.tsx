@@ -150,17 +150,6 @@ const products: Product[] = [
     badge: "Value Pack",
   },
   {
-    name: "Karom White Floor Cleaner",
-    category: "Household",
-    subCategory: "Floor Care",
-    packSize: "5L",
-    price: "₹120",
-    description:
-      "Bulk cleaning solution for homes, offices, schools, hotels, and institutions.",
-    image: whiteFloorCleaner,
-    badge: "Bulk",
-  },
-  {
     name: "Karom Black Cleaner",
     category: "Household",
     subCategory: "Professional Cleaning",
