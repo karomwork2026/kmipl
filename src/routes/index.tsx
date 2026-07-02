@@ -133,15 +133,61 @@ function HomePage() {
   return (
     <div ref={pageRef}>
       {/* ─── HERO SECTION (SPLIT LAYOUT) ─── */}
-      <section className="relative overflow-hidden bg-transparent pt-24 pb-16 md:pt-32 md:pb-24">
-        {/* Subtle background glow */}
-        <div 
-          className="absolute right-0 top-0 w-1/2 h-full opacity-20 blur-3xl pointer-events-none -z-10"
-          style={{ background: "linear-gradient(to bottom left, oklch(0.80 0.12 85), transparent)" }}
+      <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
+        {/* Rich layered dark background */}
+        <div
+          className="absolute inset-0 pointer-events-none -z-10"
+          style={{
+            background:
+              "linear-gradient(135deg, oklch(0.22 0.05 137) 0%, oklch(0.26 0.06 100) 45%, oklch(0.30 0.08 75) 100%)",
+          }}
         />
-        
+        {/* Warm glow top-right */}
+        <div
+          className="absolute -right-24 -top-24 w-[520px] h-[520px] rounded-full opacity-40 blur-3xl pointer-events-none -z-10 animate-float"
+          style={{ background: "radial-gradient(circle, oklch(0.80 0.14 85 / 0.55), transparent 65%)" }}
+        />
+        {/* Green glow bottom-left */}
+        <div
+          className="absolute -left-32 bottom-0 w-[460px] h-[460px] rounded-full opacity-35 blur-3xl pointer-events-none -z-10 animate-float"
+          style={{ background: "radial-gradient(circle, oklch(0.55 0.14 137 / 0.55), transparent 65%)", animationDelay: "1.5s" }}
+        />
+        {/* Subtle grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.07] pointer-events-none -z-10"
+          style={{
+            backgroundImage:
+              "linear-gradient(oklch(1 0 0 / 0.7) 1px, transparent 1px), linear-gradient(90deg, oklch(1 0 0 / 0.7) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+            maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+            WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+          }}
+        />
+        {/* Decorative SVG rings */}
+        <svg
+          className="absolute right-10 top-32 w-40 h-40 opacity-25 pointer-events-none -z-10 animate-float"
+          viewBox="0 0 100 100"
+          fill="none"
+          aria-hidden="true"
+          style={{ animationDelay: "0.8s" }}
+        >
+          <circle cx="50" cy="50" r="40" stroke="oklch(0.85 0.12 85)" strokeWidth="0.5" />
+          <circle cx="50" cy="50" r="28" stroke="oklch(0.85 0.12 85)" strokeWidth="0.5" />
+          <circle cx="50" cy="50" r="16" stroke="oklch(0.85 0.12 85)" strokeWidth="0.5" />
+        </svg>
+        {/* Decorative wave lines */}
+        <svg
+          className="absolute left-8 bottom-10 w-56 h-24 opacity-30 pointer-events-none -z-10"
+          viewBox="0 0 200 80"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path d="M0 60 Q 50 10 100 40 T 200 30" stroke="oklch(0.85 0.14 85)" strokeWidth="1" />
+          <path d="M0 70 Q 50 20 100 50 T 200 40" stroke="oklch(0.75 0.12 137)" strokeWidth="1" />
+        </svg>
+
         {/* Watermark logo */}
-        <div className="absolute left-4 top-24 w-64 opacity-[0.03] pointer-events-none -z-10">
+        <div className="absolute left-4 top-24 w-64 opacity-[0.06] pointer-events-none -z-10">
           <img src={logo} alt="" className="w-full h-auto" aria-hidden="true" />
         </div>
         
@@ -151,17 +197,17 @@ function HomePage() {
             <div className="flex flex-col gap-6 lg:pr-8">
               <p
                 className="animate-fade-in-up text-sm font-bold uppercase tracking-[0.2em]"
-                style={{ color: "oklch(0.65 0.12 75)" }}
+                style={{ color: "oklch(0.88 0.14 85)" }}
               >
                 Traditional Nutrition for Modern India
               </p>
-              <h1 className="animate-fade-in-up delay-100 text-5xl font-extrabold leading-[1.1] text-foreground md:text-6xl lg:text-[4rem]">
+              <h1 className="animate-fade-in-up delay-100 text-5xl font-extrabold leading-[1.1] text-white md:text-6xl lg:text-[4rem]">
                 Affordable Health, <br/>
                 <span className="text-gradient-gold">Hygienic Quality</span>,
                 <br />
                 Farmer&apos;s Trust
               </h1>
-              <p className="animate-fade-in-up delay-200 text-lg font-medium leading-relaxed text-muted-foreground max-w-lg">
+              <p className="animate-fade-in-up delay-200 text-lg font-medium leading-relaxed text-white/80 max-w-lg">
                 Karom Industries delivers healthy nutrition and hygiene products built for families,
                 retailers, schools, and institutions in India.
               </p>
@@ -180,7 +226,7 @@ function HomePage() {
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-border bg-transparent px-7 py-3 text-sm font-bold text-foreground transition-all duration-300 hover:border-brand-gold hover:bg-surface-2 hover:scale-105"
+                  className="inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-white/30 bg-white/5 px-7 py-3 text-sm font-bold text-white backdrop-blur transition-all duration-300 hover:border-brand-gold hover:bg-white/10 hover:scale-105"
                 >
                   Learn More
                 </Link>
@@ -189,11 +235,11 @@ function HomePage() {
               {/* Inline stats (Moved below text in left col) */}
               <div className="animate-fade-in-up delay-400 mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="pt-4 border-t border-border">
-                    <p className="text-2xl font-extrabold" style={{ color: "oklch(0.65 0.12 75)" }}>
+                  <div key={stat.label} className="pt-4 border-t border-white/20">
+                    <p className="text-2xl font-extrabold" style={{ color: "oklch(0.88 0.14 85)" }}>
                       {stat.value}
                     </p>
-                    <p className="mt-1 text-[11px] font-bold text-muted-foreground uppercase tracking-wider">
+                    <p className="mt-1 text-[11px] font-bold text-white/70 uppercase tracking-wider">
                       {stat.label}
                     </p>
                   </div>
