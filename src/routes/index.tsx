@@ -133,81 +133,91 @@ function HomePage() {
   return (
     <div ref={pageRef}>
       {/* ─── HERO SECTION (SPLIT LAYOUT) ─── */}
-      <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
-        {/* Rich layered dark background */}
+      <section className="relative overflow-hidden pt-14 pb-12 md:pt-20 md:pb-20">
+        {/* Soft layered background – light warm cream with subtle brand tint */}
         <div
           className="absolute inset-0 pointer-events-none -z-10"
           style={{
             background:
-              "linear-gradient(135deg, oklch(0.22 0.05 137) 0%, oklch(0.26 0.06 100) 45%, oklch(0.30 0.08 75) 100%)",
+              "linear-gradient(135deg, oklch(0.97 0.02 130) 0%, oklch(0.96 0.03 100) 50%, oklch(0.94 0.05 80) 100%)",
           }}
         />
-        {/* Warm glow top-right */}
+        {/* Gold floating glow – top right */}
         <div
-          className="absolute -right-24 -top-24 w-[520px] h-[520px] rounded-full opacity-40 blur-3xl pointer-events-none -z-10 animate-float"
-          style={{ background: "radial-gradient(circle, oklch(0.80 0.14 85 / 0.55), transparent 65%)" }}
+          className="absolute -right-24 -top-24 w-[480px] h-[480px] rounded-full opacity-60 blur-3xl pointer-events-none -z-10 animate-drift-a"
+          style={{ background: "radial-gradient(circle, oklch(0.85 0.14 85 / 0.55), transparent 65%)" }}
         />
-        {/* Green glow bottom-left */}
+        {/* Green floating glow – bottom left */}
         <div
-          className="absolute -left-32 bottom-0 w-[460px] h-[460px] rounded-full opacity-35 blur-3xl pointer-events-none -z-10 animate-float"
-          style={{ background: "radial-gradient(circle, oklch(0.55 0.14 137 / 0.55), transparent 65%)", animationDelay: "1.5s" }}
+          className="absolute -left-32 -bottom-24 w-[440px] h-[440px] rounded-full opacity-45 blur-3xl pointer-events-none -z-10 animate-drift-b"
+          style={{ background: "radial-gradient(circle, oklch(0.72 0.14 137 / 0.45), transparent 65%)" }}
         />
-        {/* Subtle grid overlay */}
+        {/* Faint grid */}
         <div
-          className="absolute inset-0 opacity-[0.07] pointer-events-none -z-10"
+          className="absolute inset-0 opacity-[0.05] pointer-events-none -z-10"
           style={{
             backgroundImage:
-              "linear-gradient(oklch(1 0 0 / 0.7) 1px, transparent 1px), linear-gradient(90deg, oklch(1 0 0 / 0.7) 1px, transparent 1px)",
+              "linear-gradient(oklch(0.30 0.05 100 / 0.6) 1px, transparent 1px), linear-gradient(90deg, oklch(0.30 0.05 100 / 0.6) 1px, transparent 1px)",
             backgroundSize: "48px 48px",
             maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
             WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
           }}
         />
-        {/* Decorative SVG rings */}
+        {/* Concentric rings */}
         <svg
-          className="absolute right-10 top-32 w-40 h-40 opacity-25 pointer-events-none -z-10 animate-float"
+          className="absolute right-10 top-24 w-40 h-40 opacity-30 pointer-events-none -z-10 animate-drift-a"
           viewBox="0 0 100 100"
           fill="none"
           aria-hidden="true"
-          style={{ animationDelay: "0.8s" }}
         >
-          <circle cx="50" cy="50" r="40" stroke="oklch(0.85 0.12 85)" strokeWidth="0.5" />
-          <circle cx="50" cy="50" r="28" stroke="oklch(0.85 0.12 85)" strokeWidth="0.5" />
-          <circle cx="50" cy="50" r="16" stroke="oklch(0.85 0.12 85)" strokeWidth="0.5" />
+          <circle cx="50" cy="50" r="40" stroke="oklch(0.65 0.14 85)" strokeWidth="0.5" />
+          <circle cx="50" cy="50" r="28" stroke="oklch(0.65 0.14 85)" strokeWidth="0.5" />
+          <circle cx="50" cy="50" r="16" stroke="oklch(0.65 0.14 85)" strokeWidth="0.5" />
         </svg>
-        {/* Decorative wave lines */}
+        {/* Animated wave lines */}
         <svg
-          className="absolute left-8 bottom-10 w-56 h-24 opacity-30 pointer-events-none -z-10"
-          viewBox="0 0 200 80"
+          className="absolute left-0 bottom-6 w-[70%] h-24 opacity-40 pointer-events-none -z-10"
+          viewBox="0 0 400 80"
           fill="none"
+          preserveAspectRatio="none"
           aria-hidden="true"
         >
-          <path d="M0 60 Q 50 10 100 40 T 200 30" stroke="oklch(0.85 0.14 85)" strokeWidth="1" />
-          <path d="M0 70 Q 50 20 100 50 T 200 40" stroke="oklch(0.75 0.12 137)" strokeWidth="1" />
+          <path
+            d="M0 55 Q 60 15 130 45 T 260 35 T 400 40"
+            stroke="oklch(0.70 0.14 85)"
+            strokeWidth="1.2"
+            className="animate-wave"
+          />
+          <path
+            d="M0 68 Q 60 28 130 58 T 260 48 T 400 55"
+            stroke="oklch(0.55 0.12 137)"
+            strokeWidth="1.2"
+            className="animate-wave"
+            style={{ animationDelay: "1.5s", animationDuration: "18s" }}
+          />
         </svg>
 
         {/* Watermark logo */}
-        <div className="absolute left-4 top-24 w-64 opacity-[0.06] pointer-events-none -z-10">
+        <div className="absolute left-4 top-16 w-56 opacity-[0.05] pointer-events-none -z-10">
           <img src={logo} alt="" className="w-full h-auto" aria-hidden="true" />
         </div>
-        
+
         <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-8 items-center">
             {/* Left Column: Text */}
-            <div className="flex flex-col gap-6 lg:pr-8">
+            <div className="flex flex-col gap-5 lg:pr-8">
               <p
                 className="animate-fade-in-up text-sm font-bold uppercase tracking-[0.2em]"
-                style={{ color: "oklch(0.88 0.14 85)" }}
+                style={{ color: "oklch(0.55 0.14 75)" }}
               >
                 Traditional Nutrition for Modern India
               </p>
-              <h1 className="animate-fade-in-up delay-100 text-5xl font-extrabold leading-[1.1] text-white md:text-6xl lg:text-[4rem]">
-                Affordable Health, <br/>
-                <span className="text-gradient-gold">Hygienic Quality</span>,
-                <br />
-                Farmer&apos;s Trust
+              <h1 className="text-4xl font-extrabold leading-[1.15] text-foreground md:text-5xl lg:text-[3.5rem]">
+                <span className="typewriter-line block">Affordable Health,</span>
+                <span className="typewriter-line tw-2 block text-gradient-gold">Hygienic Quality,</span>
+                <span className="typewriter-line tw-3 block">Farmer&apos;s Trust</span>
               </h1>
-              <p className="animate-fade-in-up delay-200 text-lg font-medium leading-relaxed text-white/80 max-w-lg">
+              <p className="animate-fade-in-up delay-200 text-base md:text-lg font-medium leading-relaxed text-muted-foreground max-w-lg">
                 Karom Industries delivers healthy nutrition and hygiene products built for families,
                 retailers, schools, and institutions in India.
               </p>
