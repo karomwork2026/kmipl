@@ -236,20 +236,20 @@ function HomePage() {
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-white/30 bg-white/5 px-7 py-3 text-sm font-bold text-white backdrop-blur transition-all duration-300 hover:border-brand-gold hover:bg-white/10 hover:scale-105"
+                  className="inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-border bg-white/60 px-7 py-3 text-sm font-bold text-foreground backdrop-blur transition-all duration-300 hover:border-brand-gold hover:bg-white/80 hover:scale-105"
                 >
                   Learn More
                 </Link>
               </div>
 
-              {/* Inline stats (Moved below text in left col) */}
-              <div className="animate-fade-in-up delay-400 mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {/* Inline stats */}
+              <div className="animate-fade-in-up delay-400 mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="pt-4 border-t border-white/20">
-                    <p className="text-2xl font-extrabold" style={{ color: "oklch(0.88 0.14 85)" }}>
+                  <div key={stat.label} className="pt-4 border-t border-border">
+                    <p className="text-2xl font-extrabold" style={{ color: "oklch(0.55 0.14 75)" }}>
                       {stat.value}
                     </p>
-                    <p className="mt-1 text-[11px] font-bold text-white/70 uppercase tracking-wider">
+                    <p className="mt-1 text-[11px] font-bold text-muted-foreground uppercase tracking-wider">
                       {stat.label}
                     </p>
                   </div>
